@@ -249,14 +249,27 @@
       </select>
     </p>
 
-    <p>
-      <label for="message">Повідомлення / побажання:</label>
-      <textarea id="message" name="message" rows="4" placeholder="Наприклад: розмір, колір рами, привіт у листі..."></textarea>
-    </p>
+   <section class="contact-form">
+  <form action="/submit" method="POST">
+    <div class="form-group">
+      <label for="message">Повідомлення або побажання</label>
+      <textarea 
+        id="message" 
+        name="message" 
+        rows="4" 
+        placeholder="Наприклад: бажаний розмір, колір рами, особисте привітання у листі…" 
+        aria-describedby="message-hint"
+      ></textarea>
+      <small id="message-hint" class="form-hint">Необов’язкове поле. Вкажіть деталі, які допоможуть нам краще виконати ваше замовлення.</small>
+    </div>
 
-    <button type="submit">Надіслати заявку</button>
+    <button type="submit" class="btn btn-primary">
+      Надіслати заявку
+    </button>
   </form>
 </section>
 
+
 </body>
+
 </html>
