@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduFuture — Освітні курси майбутнього</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* ===============
+       БАЗА / ТЕМА
+    =============== */
+    :root {
+      --brand: #4a6cf7;
+      --brand-2: #6c85f8;
+      --text: #333;
+      --muted: #666;
+      --bg: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      --card: #fff;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+    body.no-scroll { overflow: hidden; }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===============
+       НАВІГАЦІЯ
+    =============== */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0,0,0,.1);
+    }
+    .nav-container {
+      max-width: 1200px; margin: 0 auto; height: 80px; padding: 0 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-size: 24px; font-weight: 800; color: var(--brand); }
+    .logo i { color: var(--brand); }
+
+    /* ЄДИНЕ МЕНЮ (без дублювання) */
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a { position: relative; font-weight: 500; color: #555; transition: .25s ease; }
+    .nav-links a:hover { color: var(--brand); }
+    .nav-links a.active { color: var(--brand); }
+    .nav-links a.active::after {
+      content: ""; position: absolute; left: 0; bottom: -8px; width: 100%; height: 3px;
+      background: var(--brand); border-radius: 2px;
+    }
+
+    .mobile-menu-btn { display: none; background: none; border: 0; font-size: 24px; color: #333; cursor: pointer; }
+
+    /* Мобільний дропдаун (анімація) */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute; left: 0; right: 0; top: 80px; background: #fff; box-shadow: var(--shadow);
+        flex-direction: column; overflow: hidden;
+        max-height: 0; opacity: 0; pointer-events: none;
+        transition: max-height .35s ease, opacity .35s ease;
+      }
+      .nav-links.open { max-height: 420px; opacity: 1; pointer-events: auto; }
+      .nav-links a { padding: 15px 20px; border-bottom: 1px solid #eee; }
+      .nav-links a:last-child { border-bottom: 0; }
+
+      .mobile-menu-btn { display: block; }
+    }
+
+    /* ===============
+       HERO
+    =============== */
+    .hero { padding: 120px 20px 80px; position: relative; overflow: hidden; }
+    .hero-container {
+      max-width: 1200px; margin: 0 auto; display: grid; gap: 60px; align-items: center;
+      grid-template-columns: 1fr 1fr;
+    }
+    .hero-content h1 { font-size: 3.2rem; font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 20px; opacity: 0; transform: translateY(30px); animation: fadeInUp .8s ease forwards .2s; }
+    .hero-content h1 span { color: var(--brand); }
+    .hero-content p { font-size: 1.15rem; color: var(--muted); margin-bottom: 30px; max-width: 520px; opacity: 0; transform: translateY(30px); animation: fadeInUp .8s ease forwards .4s; }
+    .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; transform: translateY(30px); animation: fadeInUp .8s ease forwards .6s; }
+
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border-radius: 50px; font-weight: 700; font-size: 1.05rem; cursor: pointer; transition: .25s ease; text-decoration: none; }
+    .btn-primary { background: var(--brand); color: #fff; box-shadow: 0 10px 25px rgba(74,108,247,.3); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(74,108,247,.4); }
+    .btn-secondary { background: transparent; color: var(--brand); border: 2px solid var(--brand); }
+    .btn-secondary:hover { background: var(--brand); color: #fff; transform: translateY(-3px); }
+
+    .hero-image { position: relative; display: flex; justify-content: center; opacity: 0; transform: translateX(30px); animation: fadeInRight .8s ease forwards .8s; }
+    .hero-image img { border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,.15); }
+    .floating-circle { position: absolute; border-radius: 50%; opacity: .15; animation: pulse 3s infinite; }
+    .circle-1 { top: -20px; right: -20px; width: 80px; height: 80px; background: var(--brand); animation-delay: 0s; }
+    .circle-2 { bottom: -15px; left: -15px; width: 60px; height: 60px; background: var(--brand-2); animation-delay: 1.5s; }
+
+    /* ===============
+       COURSES
+    =============== */
+    .courses { padding: 100px 20px; background: #fff; }
+    .section-title { text-align: center; margin-bottom: 60px; }
+    .section-title h2 { font-size: 2.4rem; font-weight: 800; color: var(--text); margin-bottom: 12px; opacity: 0; animation: fadeIn .8s ease forwards 1s; }
+    .section-title h2 span { color: var(--brand); }
+    .section-title p { font-size: 1.1rem; color: var(--muted); max-width: 720px; margin: 0 auto; opacity: 0; animation: fadeIn .8s ease forwards 1.2s; }
+
+    .courses-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 30px; }
+    .course-card { background: #fff; padding: 30px; border-radius: 20px; box-shadow: var(--shadow); transition: .25s ease; opacity: 0; transform: translateY(30px); }
+    .course-card.visible { opacity: 1; transform: translateY(0); }
+    .course-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,.12); }
+    .course-icon { font-size: 2.6rem; color: var(--brand); margin-bottom: 16px; }
+    .course-card h3 { font-size: 1.4rem; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .course-card p { color: var(--muted); margin-bottom: 18px; }
+    .course-info { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid #eee; }
+    .course-duration { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: .95rem; }
+    .course-price { font-weight: 800; color: var(--brand); }
+
+    /* ===============
+       FEATURES
+    =============== */
+    .features { padding: 100px 20px; background: var(--bg); }
+    .features-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .features-content h2 { font-size: 2.4rem; font-weight: 800; color: var(--text); margin-bottom: 16px; opacity: 0; animation: fadeIn .8s ease forwards 1.4s; }
+    .features-content h2 span { color: var(--brand); }
+    .features-content p { font-size: 1.05rem; color: var(--muted); margin-bottom: 24px; line-height: 1.7; opacity: 0; animation: fadeIn .8s ease forwards 1.6s; }
+
+    .features-list { margin-bottom: 30px; }
+    .feature-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; opacity: 0; transform: translateX(-30px); }
+    .feature-item.visible { opacity: 1; transform: translateX(0); }
+    .feature-icon { background: var(--brand); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .feature-text h4 { font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .feature-text p { color: var(--muted); font-size: .95rem; }
+
+    .features-image img { border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,.15); opacity: 0; transform: translateX(30px); animation: fadeInRight .8s ease forwards 1.8s; }
+
+    /* ===============
+       TESTIMONIALS
+    =============== */
+    .testimonials { padding: 100px 20px; background: #fff; }
+    .testimonials-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3,1fr); gap: 30px; }
+    .testimonial-card { background: linear-gradient(to bottom right, #f8f9fa, #e9ecef); padding: 36px; border-radius: 20px; box-shadow: var(--shadow); transition: .25s ease; opacity: 0; transform: translateY(30px); }
+    .testimonial-card.visible { opacity: 1; transform: translateY(0); }
+    .testimonial-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,.12); }
+    .testimonial-rating { display: flex; gap: 6px; margin-bottom: 14px; color: #ffd700; }
+    .testimonial-text { font-style: italic; color: var(--muted); margin-bottom: 20px; }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar { width: 50px; height: 50px; background: var(--brand); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800; font-size: 1.1rem; }
+    .author-info h4 { font-weight: 800; color: var(--text); }
+    .author-info p { color: var(--muted); font-size: .9rem; }
+
+    /* ===============
+       CTA
+    =============== */
+    .cta { padding: 100px 20px; background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%); text-align: center; color: #fff; }
+    .cta-container { max-width: 820px; margin: 0 auto; }
+    .cta h2 { font-size: 2.6rem; font-weight: 800; margin-bottom: 16px; opacity: 0; animation: fadeIn .8s ease forwards 2s; }
+    .cta p { font-size: 1.1rem; margin-bottom: 34px; opacity: 0; animation: fadeIn .8s ease forwards 2.2s; }
+    .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--brand); padding: 16px 34px; border-radius: 50px; font-weight: 800; font-size: 1.2rem; box-shadow: 0 10px 25px rgba(255,255,255,.2); transition: .25s ease; opacity: 0; animation: fadeIn .8s ease forwards 2.4s; }
+    .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255,255,255,.3); }
+
+    /* ===============
+       FOOTER
+    =============== */
+    footer { background: #1a1c20; color: #ecf0f1; padding: 80px 20px 40px; }
+    .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+    .footer-about p { color: #bdc3c7; line-height: 1.7; margin-bottom: 18px; }
+    .social-links { display: flex; gap: 14px; }
+    .social-links a { color: #bdc3c7; font-size: 1.2rem; transition: .25s ease; }
+    .social-links a:hover { color: var(--brand); }
+    .footer-column h3 { font-size: 1.2rem; font-weight: 800; color: #ecf0f1; margin-bottom: 16px; position: relative; padding-bottom: 10px; }
+    .footer-column h3::after { content: ""; position: absolute; bottom: 0; left: 0; width: 50px; height: 2px; background: var(--brand); }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { color: #bdc3c7; transition: .2s ease; }
+    .footer-links a:hover { color: var(--brand); }
+    .footer-contact li { margin-bottom: 10px; color: #bdc3c7; display: flex; align-items: center; gap: 10px; }
+    .footer-bottom { text-align: center; padding-top: 34px; margin-top: 50px; border-top: 1px solid #2c3e50; color: #95a5a6; font-size: .9rem; }
+
+    /* ===============
+       РЕСПОНСИВ
+    =============== */
+    @media (max-width: 1024px) {
+      .hero-container, .features-container { grid-template-columns: 1fr; text-align: center; }
+      .hero-content p { margin: 0 auto 30px; }
+      .features-image img { order: -1; }
+    }
+    @media (max-width: 900px) { .testimonials-grid, .courses-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) {
+      .hero { padding: 90px 20px 60px; }
+      .hero-content h1 { font-size: 2.4rem; }
+      .courses-grid, .testicals-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-container { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 460px) {
+      .footer-container { grid-template-columns: 1fr; }
+      .cta h2 { font-size: 2.1rem; }
+    }
+
+    /* ===============
+       АНІМАЦІЇ
+    =============== */
+    @keyframes pulse { 0% { transform: scale(1); opacity: .15; } 50% { transform: scale(1.1); opacity: .25; } 100% { transform: scale(1); opacity: .15; } }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInRight { to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+  </style>
+</head>
+<body>
+  <!-- ===== NAVIGATION (single menu) ===== -->
+  <nav>
+    <div class="nav-container">
+      <a class="logo" href="#home" aria-label="EduFuture">
+        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+        <span>EduFuture</span>
+      </a>
+
+      <button class="mobile-menu-btn" aria-label="Меню" aria-controls="primary-nav" aria-expanded="false">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <div class="nav-links" id="primary-nav">
+        <a href="#home" class="active">Головна</a>
+        <a href="#courses">Курси</a>
+        <a href="#features">Переваги</a>
+        <a href="#testimonials">Відгуки</a>
+        <a href="#contact">Контакти</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>Освіта майбутнього <span>вже сьогодні</span></h1>
+        <p>Наші курси допоможуть вам опанувати сучасні навички, які потрібні на ринку праці, — від нуля до впевненого професіонала.</p>
+        <div class="hero-buttons">
+          <a href="#courses" class="btn btn-primary"><i class="fas fa-book"></i><span>Переглянути курси</span></a>
+          <a href="#contact" class="btn btn-secondary">Зв'язатися з нами</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://placehold.co/500x600/ffffff/4a6cf7?text=EduFuture+Courses" alt="EduFuture Courses" />
+        <div class="floating-circle circle-1"></div>
+        <div class="floating-circle circle-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COURSES ===== -->
+  <section id="courses" class="courses">
+    <div class="section-title">
+      <h2>Наші <span>курси</span></h2>
+      <p>Обирайте курс, який відповідає вашим цілям та рівню підготовки</p>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card">
+        <div class="course-icon"><i class="fas fa-laptop-code"></i></div>
+        <h3>Веб-розробка</h3>
+        <p>Повний курс: HTML, CSS, JavaScript, React, Node.js та інші сучасні технології.</p>
+        <div class="course-info">
+          <div class="course-duration"><i class="far fa-clock"></i><span>6 місяців</span></div>
+          <div class="course-price">₴12,000</div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Аналітика даних</h3>
+        <p>Працюйте з великими обсягами даних, створюйте звіти та візуалізації, робіть прогнози.</p>
+        <div class="course-info">
+          <div class="course-duration"><i class="far fa-clock"></i><span>5 місяців</span></div>
+          <div class="course-price">₴10,500</div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-icon"><i class="fas fa-robot"></i></div>
+        <h3>Штучний інтелект</h3>
+        <p>Машинне навчання, нейромережі, обробка мови та комп'ютерний зір — від бази до продвинутих тем.</p>
+        <div class="course-info">
+          <div class="course-duration"><i class="far fa-clock"></i><span>8 місяців</span></div>
+          <div class="course-price">₴18,000</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section id="features" class="features">
+    <div class="features-container">
+      <div class="features-content">
+        <h2>Чому <span>обирають нас</span></h2>
+        <p>Наші програми створені з урахуванням вимог ринку праці та побажань студентів.</p>
+        <div class="features-list">
+          <div class="feature-item"><div class="feature-icon"><i class="fas fa-check"></i></div><div class="feature-text"><h4>Практичні завдання</h4><p>80% часу ви працюєте над реальними задачами, що прискорює навчання.</p></div></div>
+          <div class="feature-item"><div class="feature-icon"><i class="fas fa-check"></i></div><div class="feature-text"><h4>Досвідчені викладачі</h4><p>Викладачі — практики з багаторічним досвідом у топових компаніях.</p></div></div>
+          <div class="feature-item"><div class="feature-icon"><i class="fas fa-check"></i></div><div class="feature-text"><h4>Підтримка після курсу</h4><p>Допомога з працевлаштуванням та консультації навіть після випуску.</p></div></div>
+        </div>
+        <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i><span>Записатися на курс</span></a>
+      </div>
+      <div class="features-image">
+        <img src="https://placehold.co/600x400/ffffff/4a6cf7?text=Learning+Experience" alt="Learning Experience" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="testimonials" class="testimonials">
+    <div class="section-title">
+      <h2>Відгуки <span>наших студентів</span></h2>
+      <p>Дізнайтеся, що говорять люди, які вже пройшли наші курси</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="testimonial-text">"За 6 місяців опанував веб-розробку. Через 2 місяці після курсу знайшов роботу із зарплатою 35 000 грн. Викладачі — професіонали!"</p>
+        <div class="testimonial-author"><div class="author-avatar">О</div><div class="author-info"><h4>Олександр Коваль</h4><p>Веб-розробник</p></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="testimonial-text">"Курс з аналітики даних змінив кар'єру. Працюю у великій компанії та заробляю втричі більше. Дякую за якісну освіту!"</p>
+        <div class="testimonial-author"><div class="author-avatar">М</div><div class="author-info"><h4>Марина Петренко</h4><p>Data Analyst</p></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+        <p class="testimonial-text">"Інтенсивно, але ефективно. Дуже сподобалася підтримка викладачів та реальні проєкти."</p>
+        <div class="testimonial-author"><div class="author-avatar">Д</div><div class="author-info"><h4>Дмитро Сидоренко</h4><p>AI Specialist</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta">
+    <div class="cta-container">
+      <h2>Готові змінити свою кар'єру?</h2>
+      <p>Запишіться на курс уже сьогодні і отримайте знижку 15% для нових студентів.</p>
+      <a href="#contact" class="cta-btn"><i class="fas fa-paper-plane"></i><span>Записатися зараз</span></a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo" style="display:flex;align-items:center;gap:10px;font-weight:800;color:#ecf0f1;">
+          <i class="fas fa-graduation-cap"></i>
+          <span>EduFuture</span>
+        </div>
+        <p>Ми створюємо сучасні освітні курси, що допомагають опанувати актуальні професії та досягти успіху.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Курси</h3>
+        <ul class="footer-links">
+          <li><a href="#courses">Веб-розробка</a></li>
+          <li><a href="#courses">Аналітика даних</a></li>
+          <li><a href="#courses">Штучний інтелект</a></li>
+         <!-- <li><a href="#courses">UX/UI Дизайн</a></li> -->
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Інформація</h3>
+        <ul class="footer-links">
+          <li><a href="#features">Про нас</a></li>
+          <li><a href="#features">Викладачі</a></li>
+          <li><a href="#testimonials">Відгуки</a></li>
+          <li><a href="#">Блог</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Контакти</h3>
+        <ul class="footer-contact" style="list-style:none;padding:0;">
+          <li><i class="fas fa-envelope"></i> info@edufuture.ua</li>
+          <li><i class="fas fa-phone"></i> +38 (067) 123-45-67</li>
+          <li><i class="fas fa-map-marker-alt"></i> Київ, вул. Освітня, 15</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 EduFuture. Всі права захищені.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ========= ХЕЛПЕРИ =========
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+    const nav = $('nav');
+    const navLinksWrap = $('#primary-nav');
+    const menuBtn = $('.mobile-menu-btn');
+    const menuIcon = $('.mobile-menu-btn i');
+    const allLinks = $$('#primary-nav a');
+
+    const NAV_HEIGHT = () => nav.offsetHeight || 80;
+
+    function openMenu() {
+      navLinksWrap.classList.add('open');
+      menuBtn.setAttribute('aria-expanded', 'true');
+      menuIcon.classList.remove('fa-bars');
+      menuIcon.classList.add('fa-xmark');
+      document.body.classList.add('no-scroll');
+    }
+    function closeMenu() {
+      navLinksWrap.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuIcon.classList.add('fa-bars');
+      menuIcon.classList.remove('fa-xmark');
+      document.body.classList.remove('no-scroll');
+    }
+    function toggleMenu() { navLinksWrap.classList.contains('open') ? closeMenu() : openMenu(); }
+
+    // Клік по бургеру
+    menuBtn.addEventListener('click', toggleMenu);
+
+    // Закриття по ESC
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+
+    // Закриття при кліку поза меню на мобільному
+    document.addEventListener('click', (e) => {
+      const within = nav.contains(e.target);
+      if (!within && navLinksWrap.classList.contains('open')) closeMenu();
+    });
+
+    // Плавний скрол і активні пункти
+    allLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const target = $(href);
+          if (!target) return;
+          const y = target.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT();
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+        closeMenu();
+      });
+    });
+
+    // Відстеження активної секції
+    const sections = $$('section');
+    function setActiveOnScroll() {
+      let current = '';
+      const scrollPos = window.scrollY + NAV_HEIGHT() + 70; // трішки запасу
+      sections.forEach(sec => {
+        const top = sec.offsetTop;
+        const bottom = top + sec.offsetHeight;
+        if (scrollPos >= top && scrollPos < bottom) current = sec.id;
+      });
+      allLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === `#${current}`);
+      });
+    }
+    window.addEventListener('scroll', setActiveOnScroll);
+    window.addEventListener('load', setActiveOnScroll);
+
+    // Анімації при появі елементів
+    function animateOnScroll() {
+      const elements = $$('.course-card, .feature-item, .testimonial-card');
+      const screenPos = window.innerHeight / 1.2;
+      elements.forEach(el => {
+        const rectTop = el.getBoundingClientRect().top;
+        if (rectTop < screenPos) {
+          // індивідуальна затримка для плавності
+          const list = el.classList;
+          let delay = 0;
+          if (list.contains('course-card')) delay = 0.15 * $$('.course-card').indexOf?.(el) || 0;
+          if (list.contains('feature-item')) delay = 0.2 * $$('.feature-item').indexOf?.(el) || 0;
+          if (list.contains('testimonial-card')) delay = 0.15 * $$('.testimonial-card').indexOf?.(el) || 0;
+          setTimeout(() => el.classList.add('visible'), 200 + delay * 1000);
+        }
+      });
+    }
+    window.addEventListener('load', animateOnScroll);
+    window.addEventListener('scroll', animateOnScroll);
+  </script>
+</body>
+</html>
