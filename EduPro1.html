@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPro - Освітні курси нового покоління</title>
+    <style>
+	       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            animation: fadeInLeft 1s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="none"><path d="M0,20 Q250,80 500,20 T1000,20 V100 H0 V20 Z" fill="rgba(255,255,255,0.1)"/></svg>') repeat-x;
+            animation: wave 10s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+       .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            animation: fadeInUp 25s ease;
+			
+        }
+	
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 80px 0;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: slideInLeft 1s ease;
+        }
+
+        .course-card:nth-child(even) {
+            animation: slideInRight 1s ease;
+        }
+
+        .course-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .course-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+
+        .course-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .course-price {
+            font-size: 1.5rem;
+            color: #667eea;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            animation: countUp 2s ease;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .features-grid,
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Floating elements */
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-shape:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">EduPro</div>
+            <ul class="nav-links">
+                <li><a href="#home">Головна</a></li>
+                <li><a href="#courses">Курси</a></li>
+                <li><a href="#about">Про нас</a></li>
+                <li><a href="#contact">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-shape">📚</div>
+        <div class="floating-shape">🎓</div>
+        <div class="floating-shape">💡</div>
+        
+        <div class="container hero-content">
+            <h1>Освітні курси нового покоління</h1>
+            <p>Отримайте нові навички та знання з нашими інтерактивними онлайн-курсами. Навчайтесь у зручному темпі з досвідченими викладачами.</p>
+            <a href="#courses" class="cta-button">Переглянути курси</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="about">
+        <div class="container">
+            <h2 class="section-title">Чому обирають нас?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Персоналізований підхід</h3>
+                    <p>Індивідуальні програми навчання, адаптовані під ваші потреби та рівень підготовки.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>Досвідчені викладачі</h3>
+                    <p>Наші експерти мають багаторічний досвід та готові поділитися своїми знаннями з вами.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Сертифікати</h3>
+                    <p>Отримайте офіційні сертифікати про завершення курсів для вашого портфоліо.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+	<!-- Courses Section -->
+<section class="courses" id="courses">
+  <div class="container">
+    <h2 class="section-title">Наші курси</h2>
+    <div class="courses-grid">
+
+      <!-- ТОП курс -->
+      <div class="course-card">
+        <div class="course-image">💻</div>
+        <div class="course-content">
+          <h3 class="course-title">Веб-розробка</h3>
+          <p class="course-description">
+            Повний курс з HTML, CSS, JavaScript та React. Створіть свій перший веб-сайт за 8 тижнів з нуля.
+          </p>
+          <ul class="course-features">
+            <li>8 тижнів практики</li>
+            <li>Живі заняття та записи</li>
+            <li>Сертифікат після завершення</li>
+            <li>Підтримка ментора</li>
+          </ul>
+          <div class="course-footer">
+            <div class="course-price">2,499 грн</div>
+            <a href="#contact" class="course-button">Записатися</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Інші курси -->
+      <div class="course-card">
+        <div class="course-image">📊</div>
+        <div class="course-content">
+          <h3 class="course-title">Аналіз даних</h3>
+          <p>Вивчіть Python, pandas та машинне навчання для аналізу та візуалізації даних.</p>
+          <div class="course-price">2,899 грн</div>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-image">🎨</div>
+        <div class="course-content">
+          <h3 class="course-title">Графічний дизайн</h3>
+          <p>Освойте Adobe Photoshop та Illustrator. Створюйте професійні дизайни з нуля.</p>
+          <div class="course-price">1,999 грн</div>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-image">📱</div>
+        <div class="course-content">
+          <h3 class="course-title">Мобільна розробка</h3>
+          <p>Розробка додатків для iOS та Android за допомогою React Native та Flutter.</p>
+          <div class="course-price">3,299 грн</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+	
+
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="5000">0</span>
+                    <span class="stat-label">Студентів навчилось</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="150">0</span>
+                    <span class="stat-label">Доступних курсів</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="98">0</span>
+                    <span class="stat-label">% задоволених студентів</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="24">0</span>
+                    <span class="stat-label">Місяці підтримки</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Зв'яжіться з нами</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Ім'я</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="course">Цікавить курс</label>
+                    <input type="text" id="course" placeholder="Вкажіть назву курсу">
+                </div>
+                <div class="form-group">
+                    <label for="message">Повідомлення</label>
+                    <textarea id="message" rows="4" placeholder="Розкажіть про свої цілі навчання..."></textarea>
+                </div>
+                <button type="submit" class="cta-button">Надіслати заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 EduPro. Всі права захищені. Інвестуйте у своє майбутнє разом з нами!</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Counter animation for stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const step = target / (duration / 16); // 60fps
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    counter.textContent = Math.floor(current);
+                }, 16);
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    
+                    // Trigger counter animation for stats section
+                    if (entry.target.classList.contains('stats')) {
+                        animateCounters();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.feature-card, .course-card, .stats').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            if (name && email) {
+                // Animate button
+                const button = this.querySelector('.cta-button');
+                const originalText = button.textContent;
+                button.textContent = 'Надсилаємо...';
+                button.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    button.textContent = 'Заявку надіслано!';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.style.background = '';
+                        this.reset();
+                    }, 2000);
+                }, 1000);
+            }
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(102, 126, 234, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Add entrance animations to elements when they come into view
+        const animatedElements = document.querySelectorAll('.section-title');
+        animatedElements.forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
