@@ -11,6 +11,7 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth;
         }
         .animate-fade-in-up {
             animation: fadeInUp 1s ease-out forwards;
@@ -100,6 +101,16 @@
                 <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Products will be dynamically inserted here -->
                 </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">About Us</h2>
+                <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+                    GadgetStore is your go-to destination for the latest and most innovative tech gadgets. We believe in connecting people with technology that enhances their lives, whether for work, play, or everyday convenience. Our team is dedicated to sourcing the best products and providing an exceptional shopping experience.
+                </p>
             </div>
         </section>
 
@@ -199,8 +210,8 @@
                 for (let i = 0; i < 5; i++) {
                     const color = i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300';
                     starIcons += `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="${color}">
-                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                                     </svg>`;
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                           </svg>`;
                 }
 
                 // Create the HTML for a single product card
