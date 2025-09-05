@@ -1,34 +1,72 @@
-<!DOCTYPE html>
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <style>
+                body {
+                  background-color: white; /* Ensure the iframe has a white background */
+                }
+    
+                
+              </style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Мої сайти</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Мої проекти — Освіта, пошук, контент</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    /* Анімації */
-    @keyframes glitch {
-      0% { text-shadow: 0 0 10px rgba(0, 224, 255, 0.7); }
-      25% { text-shadow: -2px 0 rgba(255, 0, 150, 0.5), 2px 0 rgba(0, 255, 255, 0.5); }
-      50% { text-shadow: 0 0 10px rgba(0, 224, 255, 0.7); }
-      75% { text-shadow: 2px 0 rgba(255, 0, 150, 0.5), -2px 0 rgba(0, 255, 255, 0.5); }
-      100% { text-shadow: 0 0 10px rgba(0, 224, 255, 0.7); }
+    /* Advanced tech-inspired color palette with emotional depth */
+    :root {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: #1e293b;
+      --bg-card-hover: #2d3b54;
+      --text-primary: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-primary: #3b82f6;
+      --accent-secondary: #8b5cf6;
+      --accent-tertiary: #06b6d4;
+      --accent-hover: #2563eb;
+      --accent-light: #eff6ff;
+      --accent-glow: #3b82f633;
+      --border: #334155;
+      --border-hover: #64748b;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.3);
+      --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.3);
+      --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      --glow-intensity: 0 0 20px rgba(59, 130, 246, 0.4);
     }
 
-    @keyframes neonPulse {
-      0%, 100% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 0 rgba(0, 224, 255, 0.3); }
-      50% { box-shadow: 0 6px 20px rgba(0, 224, 255, 0.2), 0 0 20px rgba(0, 224, 255, 0.4); }
-    }
-
-    @keyframes floating {
+    /* Animated background gradient */
+    @keyframes float {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-15px); }
     }
 
-    @keyframes slideInUp {
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
+    }
+
+    @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(50px);
+        transform: translateY(40px);
       }
       to {
         opacity: 1;
@@ -36,13 +74,17 @@
       }
     }
 
-    @keyframes backgroundShift {
+    @keyframes gradientShift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    /* Основні стилі */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -50,23 +92,25 @@
     }
 
     body {
-      background: linear-gradient(-45deg, #0a0a0f, #1a0a2e, #16213e, #0f0f23);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.7;
+      color: var(--text-primary);
+      background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
       background-size: 400% 400%;
-      animation: backgroundShift 15s ease infinite;
-      color: #e0e0ff;
-      font-family: 'Roboto', sans-serif;
+      animation: gradientShift 15s ease infinite;
       text-align: center;
       margin: 0;
-      padding: 40px 20px;
+      padding: 60px 20px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* Декоративні елементи на фоні */
+    /* Animated background elements */
     body::before {
       content: '';
       position: fixed;
@@ -75,72 +119,255 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 20% 80%, rgba(0, 224, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 0, 150, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 90% 10%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
       pointer-events: none;
       z-index: -1;
     }
 
-    /* Заголовок кіберпанк */
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3rem;
-      font-weight: 900;
-      color: #00e0ff;
-      text-shadow: 0 0 20px rgba(0, 224, 255, 0.8);
-      margin-bottom: 50px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      animation: glitch 3s infinite, floating 6s ease-in-out infinite;
+    /* Header styles with tech aesthetic */
+    header {
+      margin-bottom: 70px;
+      max-width: 900px;
+      width: 100%;
       position: relative;
+      z-index: 10;
     }
 
-    h1::before {
-      content: '🚀 Мої проекти';
+    h1 {
+      font-family: 'Orbitron', 'Inter', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+      text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+      animation: pulse 4s ease-in-out infinite;
+      position: relative;
+      display: inline-block;
+    }
+
+    h1::after {
+      content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      color: rgba(255, 0, 150, 0.7);
-      z-index: -1;
-      animation: glitch 2.5s infinite reverse;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+      border-radius: 2px;
     }
 
-    /* Контейнер для посилань */
+    .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
+      opacity: 0.9;
+    }
+
+    /* Links container with advanced grid */
     .links {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
       margin: 0 auto;
       width: 100%;
-      padding: 20px;
+      padding: 0 10px;
     }
 
-    /* Стиль кнопок покращений */
+    /* Advanced card button styles */
     .link-btn {
-      font-family: 'Roboto', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: #ffffff;
-      background: linear-gradient(145deg, rgba(26, 26, 46, 0.8), rgba(22, 33, 62, 0.8));
-      backdrop-filter: blur(10px);
-      border: 2px solid transparent;
-      background-clip: padding-box;
-      border-radius: 15px;
-      padding: 20px 30px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 35px;
       text-align: left;
       text-decoration: none;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: var(--shadow-md);
+      transition: all var(--transition-normal);
       display: flex;
       align-items: center;
       position: relative;
       overflow: hidden;
-      animation: slideInUp 0.8s ease-out forwards;
-      opacity: 0;
+      height: 140px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      cursor: pointer;
+      z-index: 1;
     }
 
-    /* Затримка анімації для кожної кнопки */
+    .link-btn:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--accent-primary);
+      background: var(--bg-card-hover);
+    }
+
+    .link-btn:active {
+      transform: translateY(-6px);
+    }
+
+    /* Glowing effect on hover */
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      z-index: -1;
+    }
+
+    .link-btn:hover::before {
+      opacity: 1;
+    }
+
+    /* Icon styles with animation */
+    .link-btn .icon {
+      font-size: 2.4rem;
+      margin-right: 24px;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background: rgba(59, 130, 246, 0.1);
+      border-radius: 16px;
+      color: var(--accent-primary);
+    }
+
+    .link-btn:hover .icon {
+      transform: scale(1.1) rotate(10deg);
+      background: rgba(59, 130, 246, 0.2);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Text content with enhanced typography */
+    .link-btn .text {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .link-btn .title {
+      font-weight: 600;
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+      transition: color var(--transition-fast);
+      letter-spacing: -0.2px;
+    }
+
+    .link-btn .subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      transition: color var(--transition-fast);
+    }
+
+    .link-btn:hover .title,
+    .link-btn:hover .subtitle {
+      color: #ffffff;
+    }
+
+    /* Category badges with gradient */
+    .category-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-family: 'Inter', sans-serif;
+      z-index: 2;
+    }
+
+    .category-badge[data-type="Освіта"] {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white;
+    }
+
+    .category-badge[data-type="Дизайн"] {
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      color: white;
+    }
+
+    .category-badge[data-type="Бізнес"] {
+      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      color: white;
+    }
+
+    .category-badge[data-type="Пошук"] {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+    }
+
+    .category-badge[data-type="Контент"] {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: white;
+    }
+
+    .category-badge[data-type="Персона"] {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: white;
+    }
+
+    /* Footer styles with tech aesthetic */
+    footer {
+      margin-top: 100px;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      line-height: 1.8;
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      border-left: 4px solid var(--accent-primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+    }
+
+    footer strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Animation for entrance */
+    .link-btn {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
     .link-btn:nth-child(1) { animation-delay: 0.1s; }
     .link-btn:nth-child(2) { animation-delay: 0.2s; }
     .link-btn:nth-child(3) { animation-delay: 0.3s; }
@@ -150,167 +377,93 @@
     .link-btn:nth-child(7) { animation-delay: 0.7s; }
     .link-btn:nth-child(8) { animation-delay: 0.8s; }
 
-    /* Світлова лінія на кнопці */
-    .link-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 224, 255, 0.4), transparent);
-      transition: left 0.7s;
-    }
-
-    .link-btn:hover::before {
-      left: 100%;
-    }
-
-    /* Неонова рамка при ховері */
-    .link-btn::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: 15px;
-      padding: 2px;
-      background: linear-gradient(45deg, #00e0ff, #ff0096, #00ffca, #ff0096, #00e0ff);
-      background-size: 300% 300%;
-      animation: backgroundShift 3s ease infinite;
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: exclude;
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask-composite: exclude;
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-
-    .link-btn:hover::after {
-      opacity: 1;
-    }
-
-    .link-btn:hover {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 15px 35px rgba(0, 224, 255, 0.3);
-      color: #00ffca;
-      border-color: #00ffca;
-    }
-
-    .link-btn:active {
-      transform: translateY(-5px) scale(1.02);
-    }
-
-    /* Іконки */
-    .link-btn .icon {
-      font-size: 1.8rem;
-      margin-right: 15px;
-      filter: drop-shadow(0 0 8px rgba(0, 224, 255, 0.6));
-      transition: all 0.3s;
-    }
-
-    .link-btn:hover .icon {
-      transform: rotate(10deg) scale(1.2);
-      filter: drop-shadow(0 0 12px rgba(0, 255, 202, 0.8));
-    }
-
-    /* Текст кнопки */
-    .link-btn .text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .link-btn .title {
-      font-weight: 500;
-      font-size: 1.1rem;
-      margin-bottom: 4px;
-    }
-
-    .link-btn .subtitle {
-      font-size: 0.9rem;
-      opacity: 0.7;
-      color: #b0b0ff;
-    }
-
-    /* Підпис унизу покращений */
-    footer {
-      margin-top: 80px;
-      font-size: 1rem;
-      color: #888;
-      max-width: 700px;
-      line-height: 1.8;
-      background: rgba(26, 26, 46, 0.3);
-      backdrop-filter: blur(10px);
-      padding: 30px;
-      border-radius: 20px;
-      border: 1px solid rgba(0, 224, 255, 0.2);
-      animation: neonPulse 4s ease-in-out infinite;
-    }
-
-    /* Адаптивність покращена */
+    /* Responsive design */
     @media (max-width: 900px) {
+      h1 {
+        font-size: 3rem;
+      }
+      
+      .subtitle {
+        font-size: 1.2rem;
+      }
+      
       .links {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
       }
     }
 
     @media (max-width: 600px) {
       h1 {
-        font-size: 2.2rem;
-        letter-spacing: 2px;
+        font-size: 2.5rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
       }
       
       .links {
         grid-template-columns: 1fr;
-        gap: 18px;
-        padding: 10px;
+        gap: 20px;
       }
       
       .link-btn {
-        padding: 18px 25px;
+        padding: 24px 28px;
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .link-btn .icon {
+        margin-bottom: 16px;
+        align-self: flex-start;
+      }
+      
+      .category-badge {
+        top: 12px;
+        right: 12px;
       }
       
       body {
-        padding: 30px 15px;
+        padding: 40px 15px;
       }
       
       footer {
-        margin-top: 60px;
-        padding: 25px;
+        margin-top: 80px;
+        padding: 30px;
         font-size: 0.95rem;
       }
     }
 
-    @media (max-width: 400px) {
-      h1 {
-        font-size: 1.8rem;
-        letter-spacing: 1px;
-      }
-      
-      .link-btn .icon {
-        font-size: 1.5rem;
-        margin-right: 12px;
-      }
+    /* Floating effect for cards */
+    .link-btn:hover {
+      animation: float 6s ease-in-out infinite;
     }
 
-    /* Додаткові ефекти */
-    .link-btn:hover .title {
-      color: #00ffca;
-      text-shadow: 0 0 8px rgba(0, 255, 202, 0.6);
+    /* Enhanced hover effect */
+    .link-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      transition: width var(--transition-normal);
+      border-radius: 3px;
     }
 
-    /* Паралакс ефект для декоративних елементів */
-    @media (hover: hover) {
-      body::before {
-        transition: transform 0.1s ease-out;
-      }
+    .link-btn:hover::after {
+      width: 100%;
     }
   </style>
 </head>
 <body>
-  <h1>🚀 Мої проекти</h1>
+  <header>
+    <h1>Мої проекти</h1>
+    <p class="subtitle">Освітні платформи, візитки, лендінги та персональні веб-сайти з сучасним UX/UI</p>
+  </header>
+
   <div class="links">
     <a href="EduPro.html" class="link-btn">
       <span class="icon">🎓</span>
@@ -318,6 +471,7 @@
         <span class="title">Освітні курси</span>
         <span class="subtitle">EduPro платформа</span>
       </div>
+      <span class="category-badge" data-type="Освіта">Освіта</span>
     </a>
     
     <a href="EduPro1.html" class="link-btn">
@@ -326,6 +480,7 @@
         <span class="title">Освітні курси</span>
         <span class="subtitle">EduPro розширена версія</span>
       </div>
+      <span class="category-badge" data-type="Освіта">Освіта</span>
     </a>
     
     <a href="TechEdu.html" class="link-btn">
@@ -334,6 +489,7 @@
         <span class="title">Освітні курси</span>
         <span class="subtitle">TechEdu технології</span>
       </div>
+      <span class="category-badge" data-type="Освіта">Освіта</span>
     </a>
     
     <a href="ОК.design.html" class="link-btn">
@@ -342,6 +498,7 @@
         <span class="title">Портфоліо</span>
         <span class="subtitle">OK Design студія</span>
       </div>
+      <span class="category-badge" data-type="Дизайн">Дизайн</span>
     </a>
     
     <a href="Олександр Іванов.html" class="link-btn">
@@ -350,6 +507,7 @@
         <span class="title">Портфоліо</span>
         <span class="subtitle">Олександр Іванов</span>
       </div>
+      <span class="category-badge" data-type="Бізнес">Бізнес</span>
     </a>
     
     <a href="WriteSearch Pro.html" class="link-btn">
@@ -358,6 +516,7 @@
         <span class="title">Послуги</span>
         <span class="subtitle">WriteSearch Pro</span>
       </div>
+      <span class="category-badge" data-type="Пошук">Пошук</span>
     </a>
     
     <a href="WriteSearch Pro2.html" class="link-btn">
@@ -366,6 +525,7 @@
         <span class="title">Послуги</span>
         <span class="subtitle">WriteSearch Pro 2.0</span>
       </div>
+      <span class="category-badge" data-type="Контент">Контент</span>
     </a>
     
     <a href="Ірина кравчук.html" class="link-btn">
@@ -374,48 +534,47 @@
         <span class="title">Візитка</span>
         <span class="subtitle">Ірина Кравчук</span>
       </div>
+      <span class="category-badge" data-type="Персона">Персона</span>
     </a>
   </div>
   
   <footer>
-    <strong>⚡ Технічна інформація:</strong><br>
-
-  
-    УВАГА!!! Деякі сайти у стані розробки. Конкретно програмуванням не займаюсь. 
-    Покращую HTML, CSS, JavaScript, трохи знаю php, на цьому все. Тому пишіть — домовимось про співпрацю!
+    <strong>Про ці проекти:</strong><br>
+    УВАГА!!! Деякі сайти у стані розробки.<br>
+    Хоча я не є професійним програмістом, маю глибокі знання в сфері HTML, CSS та вивчаю JavaScript,<br>
+    а також базові навички роботи з PHP. Готовий до співпраці та покращення проектів разом з командою.<br>
+    Конкретно програмуванням не займаюсь. Тому пишіть — домовимось про співпрацю!
   </footer>
 
   <script>
-    // Додамо інтерактивності
     document.addEventListener('DOMContentLoaded', function() {
       const links = document.querySelectorAll('.link-btn');
       
-      // Паралакс ефект для миші
-      document.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth) * 100;
-        const y = (e.clientY / window.innerHeight) * 100;
-        
-        document.body.style.setProperty('--mouse-x', x + '%');
-        document.body.style.setProperty('--mouse-y', y + '%');
-      });
-      
-      // Звуковий ефект при кліку (опціонально)
+      // Add subtle animation on click
       links.forEach(link => {
         link.addEventListener('click', function(e) {
-          // Додамо ефект пульсації при кліку
-          this.style.transform = 'translateY(-5px) scale(0.98)';
+          this.style.transform = 'translateY(-4px)';
           setTimeout(() => {
             this.style.transform = '';
           }, 150);
         });
       });
+
+      // Add floating animation to header
+      const header = document.querySelector('header');
+      if (header) {
+        header.style.animation = 'floatSlow 8s ease-in-out infinite';
+      }
     });
+  </script>
 </body>
 </html>
 
 
-
-
-
-
-
+    
+              <script>
+                              
+              </script>
+                        </body>
+                        </html>
+                    
