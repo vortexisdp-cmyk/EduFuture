@@ -1,434 +1,421 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Олена Кравчук — Вишиті ікони ручної роботи</title>
-
-  <!-- SEO essentials -->
-  <meta name="description" content="Вишиті ікони ручної роботи зі Львова. Індивідуальні замовлення, якісні матеріали, доставка по всій Україні. Замовити ікону: телефон, Telegram або форма на сайті." />
-  <meta name="keywords" content="вишиті ікони, ікони ручної роботи, ікони Львів, вишивка хрестиком, вишивка гладдю, замовити ікону" />
-  <link rel="canonical" href="https://example.com/olena-kravchuk-icons" />
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Олена Кравчук — Вишиті ікони">
-  <meta property="og:description" content="Унікальні вишиті ікони ручної роботи. Індивідуальні замовлення. Доставка по Україні.">
-  <meta property="og:image" content="https://picsum.photos/id/1074/800/420">
-  <meta property="og:locale" content="uk_UA">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- Inline favicon SVG -->
-  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="%232c3e16"/><text x="50%" y="54%" font-size="34" text-anchor="middle" fill="%23ffffff" font-family="serif">І</text></svg>'>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Мої сайти</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    /* ====== Theme variables (default theme) ====== */
-    :root{
-      --brand-dark: #2c3e16;
-      --brand:      #4a5d23;
-      --brand-mid:  #8a9f5c;
-      --accent:     #a8c686;
-      --bg:         #f9f7f2;
-      --text:       #333333;
-      --paper:      #ffffff;
-      --muted:      #666666;
-      --ring:       #c8e6c9;
-      --shadow:     0 8px 20px rgba(0,0,0,.08);
-      --radius:     12px;
-      --transition: .28s;
+    /* Анімації */
+    @keyframes glitch {
+      0% { text-shadow: 0 0 10px rgba(0, 224, 255, 0.7); }
+      25% { text-shadow: -2px 0 rgba(255, 0, 150, 0.5), 2px 0 rgba(0, 255, 255, 0.5); }
+      50% { text-shadow: 0 0 10px rgba(0, 224, 255, 0.7); }
+      75% { text-shadow: 2px 0 rgba(255, 0, 150, 0.5), -2px 0 rgba(0, 255, 255, 0.5); }
+      100% { text-shadow: 0 0 10px rgba(0, 224, 255, 0.7); }
     }
 
-    /* Base reset & utils */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html:focus-within{scroll-behavior:smooth}
-    body{
-      font-family:'Open Sans','Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-      line-height:1.7;color:var(--text);background:var(--bg);
-      -webkit-font-smoothing:antialiased;padding:0;margin:0;
+    @keyframes neonPulse {
+      0%, 100% { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 0 0 0 rgba(0, 224, 255, 0.3); }
+      50% { box-shadow: 0 6px 20px rgba(0, 224, 255, 0.2), 0 0 20px rgba(0, 224, 255, 0.4); }
     }
-    a{color:var(--brand);text-decoration:none}
-    a:hover{text-decoration:underline}
 
-    /* Skip link for accessibility */
-    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;background:var(--paper);padding:.5rem .75rem;border-radius:8px;box-shadow:var(--shadow);z-index:9999}
-
-    /* Header */
-    header{
-      background:linear-gradient(135deg,var(--brand) 0%,var(--brand-dark) 100%);
-      color:#fff;text-align:left;padding:2.25rem 1.5rem;position:relative;overflow:hidden;
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
-    header::before{
-      content:"";position:absolute;inset:0;opacity:.14;pointer-events:none;
-      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path fill="rgba(255,255,255,0.12)" d="M20 0l-2 6-6 2 2-6 6-2zM20 40l-2-6-6-2 2 6 6 2zM0 20l6-2 2-6-6 2-2 6zM40 20l-6 2-2 6 6-2 2-6z"/></svg>');
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .brand-row{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
-    header h1{
-      font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.8rem);margin-bottom:.2rem;
-      text-shadow:2px 2px 4px rgba(0,0,0,.25);
+
+    @keyframes backgroundShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-    header p{opacity:.95;margin:0;font-style:italic}
 
-    /* Nav */
-    nav{background:var(--brand-dark);position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.12)}
-    nav ul{display:flex;gap:1.2rem;justify-content:center;list-style:none;padding:.9rem;margin:0}
-    nav a{color:#fff;font-weight:600;padding:.45rem .9rem;border-radius:28px;display:inline-block}
-    nav a:hover{background:rgba(255,255,255,.06);transform:translateY(-1px)}
-    nav a::after{content:"";display:block;height:2px;width:0;background:var(--accent);transition:width .25s,left .25s}
-    nav a:hover::after{width:70%}
+    /* Основні стилі */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    main{max-width:1100px;margin:2rem auto;padding:0 1.25rem}
+    body {
+      background: linear-gradient(-45deg, #0a0a0f, #1a0a2e, #16213e, #0f0f23);
+      background-size: 400% 400%;
+      animation: backgroundShift 15s ease infinite;
+      color: #e0e0ff;
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 40px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-x: hidden;
+    }
 
-    section{margin-bottom:3.2rem;padding:1.5rem 0;animation:fadeIn .45s ease-out}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+    /* Декоративні елементи на фоні */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 224, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 150, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
 
-    h2{color:var(--brand);margin-bottom:1rem;border-bottom:3px solid var(--brand-mid);display:inline-block;padding-bottom:.35rem;font-family:'Playfair Display',serif;font-size:1.4rem}
+    /* Заголовок кіберпанк */
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: #00e0ff;
+      text-shadow: 0 0 20px rgba(0, 224, 255, 0.8);
+      margin-bottom: 50px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: glitch 3s infinite, floating 6s ease-in-out infinite;
+      position: relative;
+    }
 
-    .highlight{background:#e8f5e9;padding:1rem;border-radius:10px;border-left:5px solid var(--brand);box-shadow:var(--shadow);margin:1rem 0}
-    ul{padding-left:1.4rem;margin:0.5rem 0}
-    ul li{margin:.5rem 0;position:relative}
-    ul li::before{content:"✦";color:var(--brand);position:absolute;left:-1.2rem;top:0}
+    h1::before {
+      content: '🚀 Мої проекти';
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: rgba(255, 0, 150, 0.7);
+      z-index: -1;
+      animation: glitch 2.5s infinite reverse;
+    }
 
-    /* Gallery */
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem}
-    .card{background:var(--paper);border-radius:12px;border:1px solid #eee;box-shadow:var(--shadow);overflow:hidden;text-align:center;transition:transform var(--transition),box-shadow var(--transition)}
-    .card:hover{transform:translateY(-6px);box-shadow:0 14px 28px rgba(0,0,0,.12)}
-    .card img{width:100%;height:240px;object-fit:contain;background:#fff;padding:14px;display:block}
-    .card p{padding:0.8rem 1rem;font-weight:600;color:var(--brand-dark)}
+    /* Контейнер для посилань */
+    .links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 20px;
+    }
 
-    .map{margin-top:1rem;padding:1rem;border-radius:10px;background:#e8f5e9;border:2px solid var(--ring);box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;gap:.5rem}
+    /* Стиль кнопок покращений */
+    .link-btn {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #ffffff;
+      background: linear-gradient(145deg, rgba(26, 26, 46, 0.8), rgba(22, 33, 62, 0.8));
+      backdrop-filter: blur(10px);
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      border-radius: 15px;
+      padding: 20px 30px;
+      text-align: left;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      animation: slideInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
 
-    .btn{display:inline-block;background:var(--brand);color:#fff;padding:.7rem 1.2rem;border-radius:999px;border:2px solid var(--brand);font-weight:700;transition:all var(--transition)}
-    .btn:hover{background:transparent;color:var(--brand);transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.08)}
+    /* Затримка анімації для кожної кнопки */
+    .link-btn:nth-child(1) { animation-delay: 0.1s; }
+    .link-btn:nth-child(2) { animation-delay: 0.2s; }
+    .link-btn:nth-child(3) { animation-delay: 0.3s; }
+    .link-btn:nth-child(4) { animation-delay: 0.4s; }
+    .link-btn:nth-child(5) { animation-delay: 0.5s; }
+    .link-btn:nth-child(6) { animation-delay: 0.6s; }
+    .link-btn:nth-child(7) { animation-delay: 0.7s; }
+    .link-btn:nth-child(8) { animation-delay: 0.8s; }
 
-    /* Testimonials */
-    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1rem}
-    .testimonial{background:#f8f9fa;padding:1rem;border-radius:10px;border-left:5px solid var(--brand-mid);position:relative;font-style:italic}
-    .testimonial::before{content:"\201C";font-size:3.6rem;color:var(--brand-mid);opacity:.28;position:absolute;top:6px;left:8px;line-height:1}
+    /* Світлова лінія на кнопці */
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 224, 255, 0.4), transparent);
+      transition: left 0.7s;
+    }
 
-    /* Contacts & form */
-    form{background:var(--paper);padding:1rem;border-radius:12px;box-shadow:var(--shadow);border:1px solid #eee}
-    label{display:block;font-weight:600;margin-top:.6rem}
-    input,textarea{width:100%;margin-top:.35rem;padding:.7rem;border:1px solid #ddd;border-radius:10px;font:inherit}
-    input:focus,textarea:focus{outline:3px solid var(--ring);border-color:var(--brand-mid)}
+    .link-btn:hover::before {
+      left: 100%;
+    }
 
-    footer{background:linear-gradient(135deg,var(--brand-dark) 0%,var(--brand) 100%);color:#fff;text-align:center;padding:2rem;margin-top:2rem;border-top:1px solid rgba(255,255,255,.06)}
+    /* Неонова рамка при ховері */
+    .link-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 15px;
+      padding: 2px;
+      background: linear-gradient(45deg, #00e0ff, #ff0096, #00ffca, #ff0096, #00e0ff);
+      background-size: 300% 300%;
+      animation: backgroundShift 3s ease infinite;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: exclude;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
 
-    /* Theme control panel */
-    .theme-panel{display:flex;gap:.6rem;align-items:center;margin-left:auto}
-    select,button.theme-btn{padding:.45rem .6rem;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;backdrop-filter:blur(2px)}
-    select:focus,button:focus{outline:2px solid rgba(255,255,255,.18)}
+    .link-btn:hover::after {
+      opacity: 1;
+    }
 
-    /* Responsiveness */
-    @media (max-width:768px){
-      header{padding:1.2rem}
-      nav ul{gap:.6rem;padding:.6rem}
-      .card img{height:200px}
+    .link-btn:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(0, 224, 255, 0.3);
+      color: #00ffca;
+      border-color: #00ffca;
+    }
+
+    .link-btn:active {
+      transform: translateY(-5px) scale(1.02);
+    }
+
+    /* Іконки */
+    .link-btn .icon {
+      font-size: 1.8rem;
+      margin-right: 15px;
+      filter: drop-shadow(0 0 8px rgba(0, 224, 255, 0.6));
+      transition: all 0.3s;
+    }
+
+    .link-btn:hover .icon {
+      transform: rotate(10deg) scale(1.2);
+      filter: drop-shadow(0 0 12px rgba(0, 255, 202, 0.8));
+    }
+
+    /* Текст кнопки */
+    .link-btn .text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .link-btn .title {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .link-btn .subtitle {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      color: #b0b0ff;
+    }
+
+    /* Підпис унизу покращений */
+    footer {
+      margin-top: 80px;
+      font-size: 1rem;
+      color: #888;
+      max-width: 700px;
+      line-height: 1.8;
+      background: rgba(26, 26, 46, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      border: 1px solid rgba(0, 224, 255, 0.2);
+      animation: neonPulse 4s ease-in-out infinite;
+    }
+
+    /* Адаптивність покращена */
+    @media (max-width: 900px) {
+      .links {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+      }
+      
+      .links {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 10px;
+      }
+      
+      .link-btn {
+        padding: 18px 25px;
+      }
+      
+      body {
+        padding: 30px 15px;
+      }
+      
+      footer {
+        margin-top: 60px;
+        padding: 25px;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+      }
+      
+      .link-btn .icon {
+        font-size: 1.5rem;
+        margin-right: 12px;
+      }
+    }
+
+    /* Додаткові ефекти */
+    .link-btn:hover .title {
+      color: #00ffca;
+      text-shadow: 0 0 8px rgba(0, 255, 202, 0.6);
+    }
+
+    /* Паралакс ефект для декоративних елементів */
+    @media (hover: hover) {
+      body::before {
+        transition: transform 0.1s ease-out;
+      }
     }
   </style>
-
-  <!-- Structured data (JSON-LD) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Олена Кравчук",
-    "jobTitle": "Майстер вишитих ікон",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Львів",
-      "addressCountry": "UA"
-    },
-    "url": "https://example.com/olena-kravchuk-icons",
-    "image": "https://picsum.photos/id/1074/800/420",
-    "sameAs": ["https://t.me/olena_kravchuk"]
-  }
-  </script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Перейти до основного контенту</a>
-
-  <header role="banner" aria-label="Шапка сайту">
-    <div class="brand-row">
-      <div style="flex:1">
-        <h1>Олена Кравчук</h1>
-        <p>Майстер вишитих ікон ручної роботи зі Львова</p>
+  <h1>🚀 Мої проекти</h1>
+  <div class="links">
+    <a href="EduPro.html" class="link-btn">
+      <span class="icon">🎓</span>
+      <div class="text">
+        <span class="title">Освітні курси</span>
+        <span class="subtitle">EduPro платформа</span>
       </div>
-
-      <!-- Theme controls in header (accessible) -->
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.6rem">
-        <div class="theme-panel" role="region" aria-label="Панель тем">
-          <label for="theme-select" style="color:#fff;font-weight:600;margin-right:.4rem">Тема</label>
-          <select id="theme-select" aria-label="Оберіть палітру тем">
-            <option value="default">Оливкова</option>
-            <option value="terracotta">Терракота</option>
-            <option value="pastel">Пастель</option>
-           </select>
-          <button class="theme-btn" id="theme-random" title="Випадкова палітра">Випадкова</button>
-        </div>
+    </a>
+    
+    <a href="EduPro1.html" class="link-btn">
+      <span class="icon">📚</span>
+      <div class="text">
+        <span class="title">Освітні курси</span>
+        <span class="subtitle">EduPro розширена версія</span>
       </div>
-    </div>
-  </header>
-
-  <nav aria-label="Головна навігація">
-    <ul role="list">
-      <li><a href="#home">Головна</a></li>
-      <li><a href="#gallery">Галерея</a></li>
-      <li><a href="#testimonials">Відгуки</a></li>
-      <li><a href="#contacts">Контакти</a></li>
-    </ul>
-  </nav>
-
-  <main id="main" role="main">
-    <!-- Home -->
-    <section id="home" aria-labelledby="about-title">
-      <h2 id="about-title">Про мене</h2>
-      <p>Мене звуть Олена. Я створюю унікальні вишиті ікони з любов'ю та молитвою. Кожна робота — ручна, з якісних матеріалів.</p>
-      <div class="highlight" role="note" aria-label="Чому вишита ікона">
-        <h3 style="margin-top:0">Чому вишита ікона?</h3>
-        <ul>
-          <li>Унікальний духовний подарунок</li>
-          <li>Індивідуальне виконання за ескізом</li>
-          <li>Ручна робота — молитва в кожному стібку</li>
-        </ul>
+    </a>
+    
+    <a href="TechEdu.html" class="link-btn">
+      <span class="icon">💻</span>
+      <div class="text">
+        <span class="title">Освітні курси</span>
+        <span class="subtitle">TechEdu технології</span>
       </div>
-    </section>
-
-    <!-- Gallery -->
-    <section id="gallery" aria-labelledby="gallery-title">
-      <h2 id="gallery-title">Мої роботи</h2>
-      <div class="gallery">
-        <article class="card" aria-labelledby="g1-title">
-          <img src="https://picsum.photos/id/1074/800/600" width="800" height="600" loading="lazy" alt="Вишита ікона Богородиці «Утішення скорблячих»">
-          <p id="g1-title">Богородиця «Утішення скорблячих»</p>
-          <div style="padding:0 0 1rem 0;color:var(--muted)">Розмір: 20×25 см · Техніка: хрестик та гладь</div>
-        </article>
-
-        <article class="card" aria-labelledby="g2-title">
-          <img src="https://picsum.photos/id/1069/800/600" width="800" height="600" loading="lazy" alt="Вишита ікона Спаса Вседержителя">
-          <p id="g2-title">Спас Вседержитель</p>
-          <div style="padding:0 0 1rem 0;color:var(--muted)">Розмір: 18×22 см · Техніка: об'ємна вишивка</div>
-        </article>
-
-        <article class="card" aria-labelledby="g3-title">
-          <img src="https://picsum.photos/id/1071/800/600" width="800" height="600" loading="lazy" alt="Вишита ікона Святого Миколая">
-          <p id="g3-title">Святий Миколай Чудотворець</p>
-          <div style="padding:0 0 1rem 0;color:var(--muted)">Розмір: 22×28 см · Техніка: комбінована вишивка</div>
-        </article>
-
-        <article class="card" aria-labelledby="g4-title">
-          <img src="https://picsum.photos/id/1073/800/600" width="800" height="600" loading="lazy" alt="Вишита ікона Архангела Михаїла">
-          <p id="g4-title">Архангел Михаїл</p>
-          <div style="padding:0 0 1rem 0;color:var(--muted)">Розмір: 25×30 см · Техніка: срібні нитки</div>
-        </article>
+    </a>
+    
+    <a href="ОК.design.html" class="link-btn">
+      <span class="icon">🎨</span>
+      <div class="text">
+        <span class="title">Портфоліо</span>
+        <span class="subtitle">OK Design студія</span>
       </div>
-
-      <div class="map" aria-label="Доставка">
-        <span aria-hidden="true">📍</span>
-        <p style="margin:0">Львів · Відправляю по всій Україні: Нова Пошта, Укрпошта, кур'єрські служби.</p>
+    </a>
+    
+    <a href="Олександр Іванов.html" class="link-btn">
+      <span class="icon">👨‍💼</span>
+      <div class="text">
+        <span class="title">Портфоліо</span>
+        <span class="subtitle">Олександр Іванов</span>
       </div>
-
-      <div style="text-align:center;margin-top:1rem">
-        <a href="#contacts" class="btn" aria-label="Перейти до замовлення">Замовити ікону</a>
+    </a>
+    
+    <a href="WriteSearch Pro.html" class="link-btn">
+      <span class="icon">🔍</span>
+      <div class="text">
+        <span class="title">Послуги</span>
+        <span class="subtitle">WriteSearch Pro</span>
       </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section id="testimonials" aria-labelledby="testimonials-title">
-      <h2 id="testimonials-title">Відгуки клієнтів</h2>
-      <div class="testimonials" role="list">
-        <blockquote class="testimonial" role="listitem">
-          <p>Отримала ікону Божої Матері — це справжнє диво! Кожен стібок пронизаний любов'ю.</p>
-          <p style="text-align:right;margin-top:.5rem;font-weight:600">— Марія, Київ</p>
-        </blockquote>
-
-        <blockquote class="testimonial" role="listitem">
-          <p>Замовив ікону Спаса для батька. Якість вишивки неймовірна.</p>
-          <p style="text-align:right;margin-top:.5rem;font-weight:600">— Андрій, Харків</p>
-        </blockquote>
-
-        <blockquote class="testimonial" role="listitem">
-          <p>Ікона Архангела Михаїла стала центром нашого молитвенного куточка.</p>
-          <p style="text-align:right;margin-top:.5rem;font-weight:600">— Оксана, Львів</p>
-        </blockquote>
+    </a>
+    
+    <a href="WriteSearch Pro2.html" class="link-btn">
+      <span class="icon">📝</span>
+      <div class="text">
+        <span class="title">Послуги</span>
+        <span class="subtitle">WriteSearch Pro 2.0</span>
       </div>
-    </section>
-
-    <!-- Contacts -->
-    <section id="contacts" aria-labelledby="contacts-title">
-      <h2 id="contacts-title">Контакти та замовлення</h2>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start">
-        <div>
-          <p>Готові замовити або маєте питання? Зв'яжіться зручним способом:</p>
-          <p>📞 <a href="tel:+380981234567" rel="nofollow">+38 (098) 123-45-67</a></p>
-          <p>📱 <a href="https://t.me/olena_kravchuk" rel="me nofollow">Написати в Telegram</a></p>
-          <p>📧 <a href="mailto:olena.kravchuk@example.com">olena.kravchuk@example.com</a></p>
-          <p>🏠 Львів, Україна</p>
-          <p class="small" style="color:var(--muted);margin-top:0.5rem">Відповідаю протягом 24 годин.</p>
-        </div>
-
-        <form id="order-form" aria-label="Форма замовлення" novalidate>
-          <label for="name">Ім'я *</label>
-          <input id="name" name="name" required placeholder="Ваше ім'я" autocomplete="name" />
-          <label for="phone">Телефон *</label>
-          <input id="phone" name="phone" required placeholder="+380..." inputmode="tel" autocomplete="tel" />
-          <label for="message">Коментар</label>
-          <textarea id="message" name="message" rows="4" placeholder="Коротко опишіть бажану ікону"></textarea>
-          <p class="small" style="color:var(--muted);margin-top:0.8rem">Натискаючи «Надіслати», ви погоджуєтеся на обробку персональних даних.</p>
-          <button class="btn" type="submit" style="margin-top:0.5rem">Надіслати</button>
-          <p id="form-status" class="small" role="status" aria-live="polite" style="margin-top:.6rem;color:var(--brand-dark)"></p>
-        </form>
+    </a>
+    
+    <a href="Ірина кравчук.html" class="link-btn">
+      <span class="icon">👩‍💼</span>
+      <div class="text">
+        <span class="title">Візитка</span>
+        <span class="subtitle">Ірина Кравчук</span>
       </div>
-    </section>
-  </main>
+    </a>
+  </div>
+  
+  <footer>
+    <strong>⚡ Технічна інформація:</strong><br>
 
-  <footer role="contentinfo">
-    <h3 style="font-family:'Playfair Display',serif;margin-bottom:.5rem">Олена Кравчук — Вишиті ікони</h3>
-    <p style="color:var(--muted)">© 2024. Кожна ікона — молитва, втілена в нитках. Створено у Львові.</p>
+  
+    УВАГА!!! Деякі сайти у стані розробки. Конкретно програмуванням не займаюсь. 
+    Покращую HTML, CSS, JavaScript, трохи знаю php, на цьому все. Тому пишіть — домовимось про співпрацю!
   </footer>
 
-  <!-- Theme palettes & script -->
   <script>
-  (function () {
-    'use strict';
-
-    var STORAGE_KEY = 'olena_palette_v1';
-
-    var palettes = {
-      "default": {
-        name: "Оливкова",
-        colors: {
-          "--brand-dark":"#2c3e16",
-          "--brand":"#4a5d23", 
-          "--brand-mid":"#8a9f5c",
-          "--accent":"#a8c686",
-          "--bg":"#f9f7f2",
-          "--text":"#333333",
-          "--paper":"#ffffff",
-          "--muted":"#666666",
-          "--ring":"#c8e6c9"
-        }
-      },
-      "terracotta": {
-        name: "Терракота",
-        colors: {
-          "--brand-dark":"#6b2f1f",
-          "--brand":"#b85c3a",
-          "--brand-mid":"#e0a58a", 
-          "--accent":"#f3c6a0",
-          "--bg":"#fff7f2",
-          "--text":"#3b2f2a",
-          "--paper":"#ffffff",
-          "--muted":"#7a6b66",
-          "--ring":"#f6e1d8"
-        }
-      },
-      "pastel": {
-        name: "Пастель",
-        colors: {
-          "--brand-dark":"#5b3b4a",
-          "--brand":"#b88fa6",
-          "--brand-mid":"#e4cfe0",
-          "--accent":"#f8e6f0", 
-          "--bg":"#fffafc",
-          "--text":"#3a2e33",
-          "--paper":"#ffffff",
-          "--muted":"#8b7b82",
-          "--ring":"#f6eaf2"
-        }
-      }
-    };
-
-    // Helper: apply palette by setting CSS variables
-    function applyPalette(name, save) {
-      if (!palettes[name]) name = 'default';
-      var colors = palettes[name].colors;
-      Object.keys(colors).forEach(function (k) {
-        document.documentElement.style.setProperty(k, colors[k]);
+    // Додамо інтерактивності
+    document.addEventListener('DOMContentLoaded', function() {
+      const links = document.querySelectorAll('.link-btn');
+      
+      // Паралакс ефект для миші
+      document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        
+        document.body.style.setProperty('--mouse-x', x + '%');
+        document.body.style.setProperty('--mouse-y', y + '%');
       });
-      if (save !== false) {
-        try { 
-          localStorage.setItem(STORAGE_KEY, name); 
-        } catch (e) { 
-          console.log('LocalStorage недоступен'); 
-        }
-      }
-      var select = document.getElementById('theme-select');
-      if (select) select.value = name;
-    }
-
-    // Random palette
-    function randomPalette() {
-      var keys = Object.keys(palettes);
-      var pick = keys[Math.floor(Math.random() * keys.length)];
-      applyPalette(pick);
-    }
-
-    // Init on DOM ready
-    document.addEventListener('DOMContentLoaded', function () {
-      console.log('DOM завантажений, ініціалізую теми...');
       
-      var saved = null;
-      try { 
-        saved = localStorage.getItem(STORAGE_KEY); 
-      } catch (e) { 
-        saved = null; 
-        console.log('LocalStorage недоступний');
-      }
-      if (!saved) saved = 'default';
-      
-      console.log('Застосовую тему:', saved);
-      applyPalette(saved, false);
-
-      var select = document.getElementById('theme-select');
-      if (select) {
-        console.log('Знайдено select елемент');
-        select.addEventListener('change', function () {
-          console.log('Змінено тему на:', this.value);
-          applyPalette(this.value, true);
+      // Звуковий ефект при кліку (опціонально)
+      links.forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Додамо ефект пульсації при кліку
+          this.style.transform = 'translateY(-5px) scale(0.98)';
+          setTimeout(() => {
+            this.style.transform = '';
+          }, 150);
         });
-      } else {
-        console.error('Не знайдено theme-select');
-      }
-      
-      var rnd = document.getElementById('theme-random');
-      if (rnd) {
-        console.log('Знайдено кнопку випадкової теми');
-        rnd.addEventListener('click', function () { 
-          console.log('Клік по випадковій темі');
-          randomPalette(); 
-        });
-      } else {
-        console.error('Не знайдено theme-random');
-      }
-
-      // Form handling
-      var form = document.getElementById('order-form');
-      var status = document.getElementById('form-status');
-      if (form) {
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          var name = (form.name && form.name.value || '').trim();
-          var phone = (form.phone && form.phone.value || '').trim();
-          if (!name || !phone) {
-            if (status) { 
-              status.textContent = 'Будь ласка, заповніть обов\'язкові поля.'; 
-              status.style.color = '#a94442'; 
-            }
-            return;
-          }
-          if (status) { 
-            status.textContent = 'Дякуємо! Ваше замовлення надіслано.'; 
-            status.style.color = 'var(--brand-dark)'; 
-          }
-          form.reset();
-        });
-      }
+      });
     });
-  })();
-  </script>
 </body>
 </html>
+
+
+
+
+
+
+
