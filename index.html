@@ -1,580 +1,774 @@
-
-                        <!DOCTYPE html>
-                        <html lang="en">
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <style>
-                body {
-                  background-color: white; /* Ensure the iframe has a white background */
-                }
-    
-                
-              </style>
-                        </head>
-                        <body>
-                            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Мої проекти — Освіта, пошук, контент</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-  <style>
-    /* Advanced tech-inspired color palette with emotional depth */
-    :root {
-      --bg-primary: #0f172a;
-      --bg-secondary: #1e293b;
-      --bg-card: #1e293b;
-      --bg-card-hover: #2d3b54;
-      --text-primary: #e2e8f0;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
-      --accent-primary: #3b82f6;
-      --accent-secondary: #8b5cf6;
-      --accent-tertiary: #06b6d4;
-      --accent-hover: #2563eb;
-      --accent-light: #eff6ff;
-      --accent-glow: #3b82f633;
-      --border: #334155;
-      --border-hover: #64748b;
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
-      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
-      --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.3);
-      --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.3);
-      --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      --glow-intensity: 0 0 20px rgba(59, 130, 246, 0.4);
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Мої проекти — Освіта, пошук, контент</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        /* ====== ЦВЕТОВЫЕ ТЕМЫ ====== */
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --bg-card-hover: #2d3b54;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-primary: #3b82f6;
+            --accent-secondary: #8b5cf6;
+            --accent-tertiary: #06b6d4;
+            --accent-hover: #2563eb;
+            --accent-light: #eff6ff;
+            --accent-glow: #3b82f633;
+            --border: #334155;
+            --border-hover: #64748b;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.3);
+            --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.3);
+            --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --glow-intensity: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
 
-    /* Animated background gradient */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-    }
+        .theme-light {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f0f4f8; /* Змінено для кращого контрасту */
+            --bg-card: #ffffff;
+            --bg-card-hover: #eef1f5;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a; /* Змінено для кращого контрасту */
+            --text-muted: #6c757d;
+            --accent-primary: #2563eb;
+            --accent-secondary: #7c3aed;
+            --accent-tertiary: #0891b2;
+            --accent-hover: #1d4ed8;
+            --accent-light: #eff6ff;
+            --accent-glow: #3b82f611;
+            --border: #e9ecef;
+            --border-hover: #dee2e6;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            --glow-intensity: none;
+        }
 
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
-      50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
-    }
+        .theme-terracotta {
+            --bg-primary: #fdf6f0;
+            --bg-secondary: #f8f0e8;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f5e8dd;
+            --text-primary: #4a2a1a;
+            --text-secondary: #6b4a3a;
+            --text-muted: #8b6a5a;
+            --accent-primary: #b85c3a;
+            --accent-secondary: #d97c5a;
+            --accent-tertiary: #e0a58a;
+            --accent-hover: #9a4a2f;
+            --accent-light: #f6e1d8;
+            --accent-glow: #b85c3a22;
+            --border: #e0c4b4;
+            --border-hover: #d0b09a;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            --glow-intensity: none;
+        }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        .theme-olive {
+            --bg-primary: #f9f7f2;
+            --bg-secondary: #f0eee8;
+            --bg-card: #ffffff;
+            --bg-card-hover: #e8f5e9;
+            --text-primary: #333333;
+            --text-secondary: #4a5d23;
+            --text-muted: #666666;
+            --accent-primary: #4a5d23;
+            --accent-secondary: #2c3e16;
+            --accent-tertiary: #8a9f5c;
+            --accent-hover: #3a4f1a;
+            --accent-light: #e8f5e9;
+            --accent-glow: #4a5d2322;
+            --border: #ddd;
+            --border-hover: #ccc;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            --glow-intensity: none;
+        }
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+        .theme-pastel {
+            --bg-primary: #fffafc;
+            --bg-secondary: #f6eaf2;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8e6f0;
+            --text-primary: #3a2e33;
+            --text-secondary: #5b3b4a;
+            --text-muted: #8b7b82;
+            --accent-primary: #b88fa6;
+            --accent-secondary: #d4a8c4;
+            --accent-tertiary: #e4cfe0;
+            --accent-hover: #9a758a;
+            --accent-light: #f8e6f0;
+            --accent-glow: #b88fa622;
+            --border: #e8c8d8;
+            --border-hover: #d8b8c8;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+            --glow-intensity: none;
+        }
 
-    @keyframes floatSlow {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
+        /* ====== АНІМАЦІЇ ====== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
+        }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.7;
-      color: var(--text-primary);
-      background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
-      background-size: 400% 400%;
-      animation: gradientShift 15s ease infinite;
-      text-align: center;
-      margin: 0;
-      padding: 60px 20px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      overflow-x: hidden;
-      position: relative;
-    }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    /* Animated background elements */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 90% 10%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: -1;
-    }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    /* Header styles with tech aesthetic */
-    header {
-      margin-bottom: 70px;
-      max-width: 900px;
-      width: 100%;
-      position: relative;
-      z-index: 10;
-    }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* ====== ОСНОВНІ СТИЛІ ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    h1 {
-      font-family: 'Orbitron', 'Inter', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 16px;
-      letter-spacing: -1px;
-      text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
-      animation: pulse 4s ease-in-out infinite;
-      position: relative;
-      display: inline-block;
-    }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary), #334155);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            text-align: center;
+            margin: 0;
+            padding: 60px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-x: hidden;
+            position: relative;
+            transition: background 0.5s ease;
+        }
 
-    h1::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
-      border-radius: 2px;
-    }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 90% 10%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
 
-    .subtitle {
-      font-size: 1.3rem;
-      color: var(--text-secondary);
-      font-weight: 400;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.8;
-      opacity: 0.9;
-    }
+        header {
+            margin-bottom: 70px;
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
 
-    /* Links container with advanced grid */
-    .links {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 30px;
-      max-width: 1400px;
-      margin: 0 auto;
-      width: 100%;
-      padding: 0 10px;
-    }
+        .main-title {
+            font-family: 'Orbitron', 'Inter', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-primary); /* Змінено для підтримки тем */
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+            animation: pulse 4s ease-in-out infinite;
+            position: relative;
+            transition: color 0.5s ease, text-shadow 0.5s ease;
+        }
 
-    /* Advanced card button styles */
-    .link-btn {
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      color: var(--text-primary);
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px 35px;
-      text-align: left;
-      text-decoration: none;
-      box-shadow: var(--shadow-md);
-      transition: all var(--transition-normal);
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      height: 140px;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      cursor: pointer;
-      z-index: 1;
-    }
+        .main-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+            border-radius: 2px;
+        }
 
-    .link-btn:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: var(--shadow-xl);
-      border-color: var(--accent-primary);
-      background: var(--bg-card-hover);
-    }
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
 
-    .link-btn:active {
-      transform: translateY(-6px);
-    }
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 10px;
+        }
 
-    /* Glowing effect on hover */
-    .link-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
-      opacity: 0;
-      transition: opacity var(--transition-fast);
-      z-index: -1;
-    }
+        .link-btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--text-primary);
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px 35px;
+            text-align: left;
+            text-decoration: none;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            height: 140px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            cursor: pointer;
+            z-index: 1;
+        }
 
-    .link-btn:hover::before {
-      opacity: 1;
-    }
+        .link-btn:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent-primary);
+            background: var(--bg-card-hover);
+        }
 
-    /* Icon styles with animation */
-    .link-btn .icon {
-      font-size: 2.4rem;
-      margin-right: 24px;
-      transition: all var(--transition-fast);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      background: rgba(59, 130, 246, 0.1);
-      border-radius: 16px;
-      color: var(--accent-primary);
-    }
+        .link-btn:active {
+            transform: translateY(-6px);
+        }
 
-    .link-btn:hover .icon {
-      transform: scale(1.1) rotate(10deg);
-      background: rgba(59, 130, 246, 0.2);
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
-    }
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+            z-index: -1;
+        }
 
-    /* Text content with enhanced typography */
-    .link-btn .text {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
+        .link-btn:hover::before {
+            opacity: 1;
+        }
 
-    .link-btn .title {
-      font-weight: 600;
-      font-size: 1.25rem;
-      margin-bottom: 8px;
-      color: var(--text-primary);
-      transition: color var(--transition-fast);
-      letter-spacing: -0.2px;
-    }
+        .link-btn .icon {
+            font-size: 2.4rem;
+            margin-right: 24px;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 16px;
+            color: var(--accent-primary);
+        }
 
-    .link-btn .subtitle {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      transition: color var(--transition-fast);
-    }
+        .link-btn:hover .icon {
+            transform: scale(1.1) rotate(10deg);
+            background: rgba(59, 130, 246, 0.2);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
 
-    .link-btn:hover .title,
-    .link-btn:hover .subtitle {
-      color: #ffffff;
-    }
+        .link-btn .text {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
 
-    /* Category badges with gradient */
-    .category-badge {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 20px;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      font-family: 'Inter', sans-serif;
-      z-index: 2;
-    }
+        .link-btn .title {
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            transition: color var(--transition-fast);
+            letter-spacing: -0.2px;
+        }
 
-    .category-badge[data-type="Освіта"] {
-      background: linear-gradient(135deg, #3b82f6, #2563eb);
-      color: white;
-    }
+        .link-btn .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            transition: color var(--transition-fast);
+        }
 
-    .category-badge[data-type="Дизайн"] {
-      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
-      color: white;
-    }
+        .link-btn:hover .title,
+        .link-btn:hover .subtitle {
+            color: #ffffff;
+        }
+        
+        .theme-light .link-btn:hover .title,
+        .theme-light .link-btn:hover .subtitle {
+            color: var(--text-primary);
+        }
 
-    .category-badge[data-type="Бізнес"] {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
-      color: white;
-    }
+        .category-badge {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-family: 'Inter', sans-serif;
+            z-index: 2;
+            color: white;
+        }
+        
+        .theme-light .category-badge,
+        .theme-terracotta .category-badge,
+        .theme-olive .category-badge,
+        .theme-pastel .category-badge {
+            color: var(--text-primary);
+        }
 
-    .category-badge[data-type="Пошук"] {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: white;
-    }
+        .category-badge[data-type="Освіта"] {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
 
-    .category-badge[data-type="Контент"] {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: white;
-    }
+        .category-badge[data-type="Дизайн"] {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
 
-    .category-badge[data-type="Персона"] {
-      background: linear-gradient(135deg, #ef4444, #dc2626);
-      color: white;
-    }
+        .category-badge[data-type="Бізнес"] {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+        }
 
-    /* Footer styles with tech aesthetic */
-    footer {
-      margin-top: 100px;
-      font-size: 1rem;
-      color: var(--text-secondary);
-      max-width: 800px;
-      line-height: 1.8;
-      background: rgba(30, 41, 59, 0.7);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      padding: 40px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-md);
-      text-align: center;
-      border-left: 4px solid var(--accent-primary);
-      position: relative;
-      overflow: hidden;
-    }
+        .category-badge[data-type="Пошук"] {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
 
-    footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
-    }
+        .category-badge[data-type="Контент"] {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
 
-    footer strong {
-      color: #ffffff;
-      font-weight: 600;
-    }
+        .category-badge[data-type="Персона"] {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+        
+        .theme-light .category-badge[data-type="Освіта"] { background: #dbeafe; color: #1e40af; }
+        .theme-light .category-badge[data-type="Дизайн"] { background: #ede9fe; color: #5b21b6; }
+        .theme-light .category-badge[data-type="Бізнес"] { background: #cffafe; color: #0e7490; }
+        .theme-light .category-badge[data-type="Пошук"] { background: #d1fae5; color: #065f46; }
+        .theme-light .category-badge[data-type="Контент"] { background: #fef9e6; color: #b45309; }
+        .theme-light .category-badge[data-type="Персона"] { background: #fee2e2; color: #991b1b; }
 
-    /* Animation for entrance */
-    .link-btn {
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out forwards;
-    }
 
-    .link-btn:nth-child(1) { animation-delay: 0.1s; }
-    .link-btn:nth-child(2) { animation-delay: 0.2s; }
-    .link-btn:nth-child(3) { animation-delay: 0.3s; }
-    .link-btn:nth-child(4) { animation-delay: 0.4s; }
-    .link-btn:nth-child(5) { animation-delay: 0.5s; }
-    .link-btn:nth-child(6) { animation-delay: 0.6s; }
-    .link-btn:nth-child(7) { animation-delay: 0.7s; }
-    .link-btn:nth-child(8) { animation-delay: 0.8s; }
+        footer {
+            margin-top: 100px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            line-height: 1.8;
+            background: var(--bg-secondary); /* Змінено для підтримки тем */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border-left: 4px solid var(--accent-primary);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
 
-    /* Responsive design */
-    @media (max-width: 900px) {
-      h1 {
-        font-size: 3rem;
-      }
-      
-      .subtitle {
-        font-size: 1.2rem;
-      }
-      
-      .links {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 24px;
-      }
-    }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+        }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.5rem;
-      }
-      
-      .subtitle {
-        font-size: 1.1rem;
-      }
-      
-      .links {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      
-      .link-btn {
-        padding: 24px 28px;
-        height: auto;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      
-      .link-btn .icon {
-        margin-bottom: 16px;
-        align-self: flex-start;
-      }
-      
-      .category-badge {
-        top: 12px;
-        right: 12px;
-      }
-      
-      body {
-        padding: 40px 15px;
-      }
-      
-      footer {
-        margin-top: 80px;
-        padding: 30px;
-        font-size: 0.95rem;
-      }
-    }
+        footer strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
 
-    /* Floating effect for cards */
-    .link-btn:hover {
-      animation: float 6s ease-in-out infinite;
-    }
+        .link-btn {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
 
-    /* Enhanced hover effect */
-    .link-btn::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-      transition: width var(--transition-normal);
-      border-radius: 3px;
-    }
+        .link-btn:nth-child(1) { animation-delay: 0.1s; }
+        .link-btn:nth-child(2) { animation-delay: 0.2s; }
+        .link-btn:nth-child(3) { animation-delay: 0.3s; }
+        .link-btn:nth-child(4) { animation-delay: 0.4s; }
+        .link-btn:nth-child(5) { animation-delay: 0.5s; }
+        .link-btn:nth-child(6) { animation-delay: 0.6s; }
+        .link-btn:nth-child(7) { animation-delay: 0.7s; }
+        .link-btn:nth-child(8) { animation-delay: 0.8s; }
 
-    .link-btn:hover::after {
-      width: 100%;
-    }
-  </style>
+        @media (max-width: 900px) {
+            .main-title {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .links {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .links {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .link-btn {
+                padding: 24px 28px;
+                height: auto;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .link-btn .icon {
+                margin-bottom: 16px;
+                align-self: flex-start;
+            }
+            
+            .category-badge {
+                top: 12px;
+                right: 12px;
+            }
+            
+            body {
+                padding: 40px 15px;
+            }
+            
+            footer {
+                margin-top: 80px;
+                padding: 30px;
+                font-size: 0.95rem;
+            }
+        }
+
+        .link-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transition: width var(--transition-normal);
+            border-radius: 3px;
+        }
+
+        .link-btn:hover::after {
+            width: 100%;
+        }
+
+        /* ====== ПАНЕЛЬ ВИБОРУ ТЕМИ ====== */
+        .theme-selector {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .theme-selector label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+
+        .theme-button {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .theme-button:hover {
+            transform: scale(1.1);
+            border-color: var(--accent-primary);
+        }
+
+        .theme-button.active {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .theme-button[data-theme="default"] {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+        }
+
+        .theme-button[data-theme="light"] {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+        }
+
+        .theme-button[data-theme="terracotta"] {
+            background: linear-gradient(135deg, #fdf6f0, #f8f0e8);
+        }
+
+        .theme-button[data-theme="olive"] {
+            background: linear-gradient(135deg, #f9f7f2, #f0eee8);
+        }
+
+        .theme-button[data-theme="pastel"] {
+            background: linear-gradient(135deg, #fffafc, #f6eaf2);
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>Мої проекти</h1>
-    <p class="subtitle">Освітні платформи, візитки, лендінги та персональні веб-сайти з сучасним UX/UI</p>
-  </header>
+<body class="theme-default">
+    <header>
+        <div class="main-title">Мої проекти</div>
+        <p class="subtitle">Освітні платформи, візитки, лендінги та персональні веб-сайти з сучасним UX/UI</p>
+    </header>
 
-  <div class="links">
-    <a href="EduPro.html" class="link-btn">
-      <span class="icon">🎓</span>
-      <div class="text">
-        <span class="title">Освітні курси</span>
-        <span class="subtitle">EduPro платформа</span>
-      </div>
-      <span class="category-badge" data-type="Освіта">Освіта</span>
-    </a>
+    <div class="links">
+        <a href="EduPro.html" class="link-btn">
+            <span class="icon">🎓</span>
+            <div class="text">
+                <span class="title">Освітні курси</span>
+                <span class="subtitle">EduPro платформа</span>
+            </div>
+            <span class="category-badge" data-type="Освіта">Освіта</span>
+        </a>
+        
+        <a href="EduPro1.html" class="link-btn">
+            <span class="icon">📚</span>
+            <div class="text">
+                <span class="title">Освітні курси</span>
+                <span class="subtitle">EduPro розширена версія</span>
+            </div>
+            <span class="category-badge" data-type="Освіта">Освіта</span>
+        </a>
+        
+        <a href="TechEdu.html" class="link-btn">
+            <span class="icon">💻</span>
+            <div class="text">
+                <span class="title">Освітні курси</span>
+                <span class="subtitle">TechEdu технології</span>
+            </div>
+            <span class="category-badge" data-type="Освіта">Освіта</span>
+        </a>
+        
+        <a href="ОК.design.html" class="link-btn">
+            <span class="icon">🎨</span>
+            <div class="text">
+                <span class="title">Портфоліо</span>
+                <span class="subtitle">OK Design студія</span>
+            </div>
+            <span class="category-badge" data-type="Дизайн">Дизайн</span>
+        </a>
+        
+        <a href="Олександр Іванов.html" class="link-btn">
+            <span class="icon">👨‍💼</span>
+            <div class="text">
+                <span class="title">Портфоліо</span>
+                <span class="subtitle">Олександр Іванов</span>
+            </div>
+            <span class="category-badge" data-type="Бізнес">Бізнес</span>
+        </a>
+        
+        <a href="WriteSearch Pro.html" class="link-btn">
+            <span class="icon">🔍</span>
+            <div class="text">
+                <span class="title">Послуги</span>
+                <span class="subtitle">WriteSearch Pro</span>
+            </div>
+            <span class="category-badge" data-type="Пошук">Пошук</span>
+        </a>
+        
+        <a href="WriteSearch Pro2.html" class="link-btn">
+            <span class="icon">📝</span>
+            <div class="text">
+                <span class="title">Послуги</span>
+                <span class="subtitle">WriteSearch Pro 2.0</span>
+            </div>
+            <span class="category-badge" data-type="Контент">Контент</span>
+        </a>
+        
+        <a href="Ірина кравчук.html" class="link-btn">
+            <span class="icon">👩‍💼</span>
+            <div class="text">
+                <span class="title">Візитка</span>
+                <span class="subtitle">Ірина Кравчук</span>
+            </div>
+            <span class="category-badge" data-type="Персона">Персона</span>
+        </a>
+    </div>
     
-    <a href="EduPro1.html" class="link-btn">
-      <span class="icon">📚</span>
-      <div class="text">
-        <span class="title">Освітні курси</span>
-        <span class="subtitle">EduPro розширена версія</span>
-      </div>
-      <span class="category-badge" data-type="Освіта">Освіта</span>
-    </a>
-    
-    <a href="TechEdu.html" class="link-btn">
-      <span class="icon">💻</span>
-      <div class="text">
-        <span class="title">Освітні курси</span>
-        <span class="subtitle">TechEdu технології</span>
-      </div>
-      <span class="category-badge" data-type="Освіта">Освіта</span>
-    </a>
-    
-    <a href="ОК.design.html" class="link-btn">
-      <span class="icon">🎨</span>
-      <div class="text">
-        <span class="title">Портфоліо</span>
-        <span class="subtitle">OK Design студія</span>
-      </div>
-      <span class="category-badge" data-type="Дизайн">Дизайн</span>
-    </a>
-    
-    <a href="Олександр Іванов.html" class="link-btn">
-      <span class="icon">👨‍💼</span>
-      <div class="text">
-        <span class="title">Портфоліо</span>
-        <span class="subtitle">Олександр Іванов</span>
-      </div>
-      <span class="category-badge" data-type="Бізнес">Бізнес</span>
-    </a>
-    
-    <a href="WriteSearch Pro.html" class="link-btn">
-      <span class="icon">🔍</span>
-      <div class="text">
-        <span class="title">Послуги</span>
-        <span class="subtitle">WriteSearch Pro</span>
-      </div>
-      <span class="category-badge" data-type="Пошук">Пошук</span>
-    </a>
-    
-    <a href="WriteSearch Pro2.html" class="link-btn">
-      <span class="icon">📝</span>
-      <div class="text">
-        <span class="title">Послуги</span>
-        <span class="subtitle">WriteSearch Pro 2.0</span>
-      </div>
-      <span class="category-badge" data-type="Контент">Контент</span>
-    </a>
-    
-    <a href="Ірина кравчук.html" class="link-btn">
-      <span class="icon">👩‍💼</span>
-      <div class="text">
-        <span class="title">Візитка</span>
-        <span class="subtitle">Ірина Кравчук</span>
-      </div>
-      <span class="category-badge" data-type="Персона">Персона</span>
-    </a>
-  </div>
-  
-  <footer>
-    <strong>Про ці проекти:</strong><br>
-    УВАГА!!! Деякі сайти у стані розробки.<br>
-    Хоча я не є професійним програмістом, маю глибокі знання в сфері HTML, CSS та вивчаю JavaScript,<br>
-    а також базові навички роботи з PHP. Готовий до співпраці та покращення проектів разом з командою.<br>
-    Конкретно програмуванням не займаюсь. Тому пишіть — домовимось про співпрацю!
-  </footer>
+    <footer>
+        <strong>Про ці проекти:</strong><br>
+        УВАГА!!! Деякі сайти у стані розробки.<br>
+        Хоча я не є професійним програмістом, маю глибокі знання в сфері HTML, CSS та вивчаю JavaScript,<br>
+        а також базові навички роботи з PHP. Готовий до співпраці та покращення проектів разом з командою.<br>
+        Конкретно програмуванням не займаюсь. Тому пишіть — домовимось про співпрацю!
+    </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const links = document.querySelectorAll('.link-btn');
-      
-      // Add subtle animation on click
-      links.forEach(link => {
-        link.addEventListener('click', function(e) {
-          this.style.transform = 'translateY(-4px)';
-          setTimeout(() => {
-            this.style.transform = '';
-          }, 150);
+    <div class="theme-selector">
+        <label for="theme-select">Тема:</label>
+        <button class="theme-button" data-theme="default" title="Техно-тёмная"></button>
+        <button class="theme-button" data-theme="light" title="Светлая"></button>
+        <button class="theme-button" data-theme="terracotta" title="Терракота"></button>
+        <button class="theme-button" data-theme="olive" title="Оливковая"></button>
+        <button class="theme-button" data-theme="pastel" title="Пастель"></button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            const themeButtons = document.querySelectorAll('.theme-button');
+            const themeNames = {
+                'default': 'theme-default',
+                'light': 'theme-light',
+                'terracotta': 'theme-terracotta',
+                'olive': 'theme-olive',
+                'pastel': 'theme-pastel'
+            };
+
+            // Проверяем сохраненную тему
+            const savedTheme = localStorage.getItem('selectedTheme') || 'default';
+            
+            // Применяем сохраненную тему
+            applyTheme(savedTheme);
+
+            // Добавляем обработчики кликов
+            themeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const theme = this.dataset.theme;
+                    
+                    // Удаляем активный класс со всех кнопок
+                    themeButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Добавляем активный класс к выбранной кнопке
+                    this.classList.add('active');
+                    
+                    // Применяем тему
+                    applyTheme(theme);
+                    
+                    // Сохраняем выбор пользователя
+                    localStorage.setItem('selectedTheme', theme);
+                });
+            });
+
+            function applyTheme(theme) {
+                // Удаляем все классы тем
+                Object.values(themeNames).forEach(className => {
+                    body.classList.remove(className);
+                });
+                
+                // Добавляем класс выбранной темы
+                body.classList.add(themeNames[theme]);
+                
+                // Обновляем фоновую анимацию для светлой темы
+                if (theme === 'light' || theme === 'terracotta' || theme === 'olive' || theme === 'pastel') {
+                    body.style.animation = 'none';
+                    document.querySelector('.main-title').style.textShadow = 'none';
+                    document.querySelector('.main-title').style.color = 'var(--text-primary)';
+                    document.querySelector('.main-title').style.animation = 'none';
+                } else {
+                    body.style.animation = 'gradientShift 15s ease infinite';
+                    document.querySelector('.main-title').style.textShadow = '0 0 20px rgba(59, 130, 246, 0.6)';
+                    document.querySelector('.main-title').style.color = '#ffffff';
+                    document.querySelector('.main-title').style.animation = 'pulse 4s ease-in-out infinite';
+                }
+
+                // Устанавливаем активный класс на кнопку
+                const activeBtn = document.querySelector(`.theme-button[data-theme="${theme}"]`);
+                if (activeBtn) {
+                    activeBtn.classList.add('active');
+                }
+            }
         });
-      });
-
-      // Add floating animation to header
-      const header = document.querySelector('header');
-      if (header) {
-        header.style.animation = 'floatSlow 8s ease-in-out infinite';
-      }
-    });
-  </script>
+    </script>
 </body>
 </html>
-
-
-    
-              <script>
-                              
-              </script>
-                        </body>
-                        </html>
-                    
