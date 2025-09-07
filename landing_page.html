@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ШІ Технології Майбутнього</title>
+<style>
+:root {
+--transition: all 0.3s ease;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+background-color: #121212;
+color: #ffffff;
+line-height: 1.6;
+transition: var(--transition);
+overflow-x: hidden;
+}
+
+body.pastel {
+background-color: #fdf2f8;
+color: #571e43;
+}
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 20px;
+}
+
+header {
+padding: 30px 0;
+position: relative;
+overflow: hidden;
+}
+
+header::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+animation: rotate 20s linear infinite;
+z-index: -1;
+}
+
+@keyframes rotate {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+
+.theme-selector {
+position: fixed;
+top: 20px;
+right: 20px;
+z-index: 100;
+display: flex;
+gap: 10px;
+padding: 10px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 50px;
+backdrop-filter: blur(10px);
+}
+
+.theme-btn {
+width: 20px;
+height: 20px;
+border-radius: 50%;
+cursor: pointer;
+border: 2px solid transparent;
+transition: var(--transition);
+}
+
+.theme-btn:hover {
+transform: scale(1.1);
+}
+
+.theme-btn.active {
+border-color: white;
+box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme {
+background-color: #1f2937;
+}
+
+.pastel-theme {
+background-color: #fbcfe8;
+}
+
+.hero {
+text-align: center;
+padding: 80px 0;
+position: relative;
+}
+
+.hero h1 {
+font-size: 3.5rem;
+font-weight: 800;
+margin-bottom: 20px;
+background: linear-gradient(90deg, #60a5fa, #8b5cf6, #ec4899);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+background-size: 300% 300%;
+animation: gradientShift 6s ease infinite;
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes gradientShift {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+
+.hero p {
+font-size: 1.2rem;
+max-width: 700px;
+margin: 0 auto 40px;
+opacity: 0.9;
+text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.floating-elements {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+pointer-events: none;
+overflow: hidden;
+}
+
+.floating-element {
+position: absolute;
+border-radius: 50%;
+opacity: 0.1;
+animation: float 15s infinite ease-in-out;
+}
+
+@keyframes float {
+0%, 100% { transform: translateY(0) rotate(0deg); }
+50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.ai-image-container {
+max-width: 900px;
+margin: 60px auto;
+position: relative;
+height: 400px;
+border-radius: 20px;
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+overflow: hidden;
+background: linear-gradient(45deg, #60a5fa, #8b5cf6, #ec4899);
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.ai-image-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.3);
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-size: 2rem;
+font-weight: bold;
+text-align: center;
+padding: 20px;
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.features {
+padding: 80px 0;
+}
+
+.features-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+margin-top: 50px;
+}
+
+.feature-card {
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(10px);
+border-radius: 20px;
+padding: 30px;
+transition: var(--transition);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.pastel .feature-card {
+background: rgba(255, 255, 255, 0.7);
+color: #571e43;
+border-color: rgba(236, 72, 153, 0.2);
+}
+
+.feature-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+border-color: rgba(99, 102, 241, 0.3);
+}
+
+body.pastel .feature-card:hover {
+border-color: rgba(236, 72, 153, 0.4);
+box-shadow: 0 20px 40px rgba(236, 72, 153, 0.1);
+}
+
+.feature-card h3 {
+font-size: 1.5rem;
+margin-bottom: 15px;
+color: #60a5fa;
+}
+
+body.pastel .feature-card h3 {
+color: #ec4899;
+}
+
+.feature-icon {
+font-size: 2.5rem;
+margin-bottom: 20px;
+display: inline-block;
+}
+
+.stats {
+padding: 80px 0;
+text-align: center;
+}
+
+.stats-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 30px;
+margin-top: 50px;
+}
+
+.stat-item {
+padding: 30px;
+border-radius: 20px;
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+transition: var(--transition);
+}
+
+body.pastel .stat-item {
+background: rgba(255, 255, 255, 0.8);
+color: #571e43;
+border: 1px solid rgba(236, 72, 153, 0.3);
+}
+
+.stat-number {
+font-size: 3rem;
+font-weight: 800;
+margin-bottom: 10px;
+display: block;
+}
+
+body:not(.pastel) .stat-number {
+background: linear-gradient(90deg, #60a5fa, #8b5cf6);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+
+body.pastel .stat-number {
+color: #ec4899;
+text-shadow: none;
+font-weight: 800;
+}
+
+.stat-label {
+font-size: 1.1rem;
+display: block;
+}
+
+body:not(.pastel) .stat-label {
+opacity: 0.9;
+}
+
+body.pastel .stat-label {
+color: #571e43;
+}
+
+.contact {
+padding: 80px 0;
+text-align: center;
+}
+
+.contact-form {
+max-width: 600px;
+margin: 40px auto 0;
+background: rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(10px);
+padding: 40px;
+border-radius: 20px;
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.pastel .contact-form {
+background: rgba(255, 255, 255, 0.8);
+color: #571e43;
+border-color: rgba(236, 72, 153, 0.2);
+}
+
+.form-group {
+margin-bottom: 25px;
+text-align: left;
+}
+
+.form-group label {
+display: block;
+margin-bottom: 8px;
+font-weight: 500;
+}
+
+body.pastel .form-group label {
+color: #571e43;
+}
+
+.form-control {
+width: 100%;
+padding: 15px;
+border-radius: 10px;
+border: 1px solid rgba(255, 255, 255, 0.2);
+background: rgba(255, 255, 255, 0.1);
+color: inherit;
+font-size: 1rem;
+transition: var(--transition);
+}
+
+body.pastel .form-control {
+background: rgba(255, 255, 255, 0.9);
+color: #571e43;
+border-color: rgba(236, 72, 153, 0.2);
+}
+
+.form-control:focus {
+outline: none;
+border-color: #60a5fa;
+box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+body.pastel .form-control:focus {
+border-color: #ec4899;
+box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.3);
+}
+
+textarea.form-control {
+min-height: 150px;
+resize: vertical;
+}
+
+.submit-btn {
+background: linear-gradient(90deg, #60a5fa, #8b5cf6);
+color: white;
+border: none;
+padding: 15px 40px;
+border-radius: 10px;
+font-size: 1.1rem;
+font-weight: 600;
+cursor: pointer;
+transition: var(--transition);
+margin-top: 10px;
+}
+
+body.pastel .submit-btn {
+background: linear-gradient(90deg, #ec4899, #8b5cf6);
+}
+
+.submit-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+}
+
+body.pastel .submit-btn:hover {
+box-shadow: 0 10px 25px rgba(236, 72, 153, 0.4);
+}
+
+footer {
+padding: 40px 0;
+text-align: center;
+opacity: 0.7;
+font-size: 0.9rem;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+margin-top: 40px;
+}
+
+body.pastel footer {
+color: #571e43;
+border-color: rgba(236, 72, 153, 0.2);
+opacity: 0.8;
+}
+
+/* Animation for floating AI elements */
+.ai-element {
+position: absolute;
+opacity: 0.1;
+animation: float 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.05); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.hero h1 {
+font-size: 2.5rem;
+}
+
+.hero p {
+font-size: 1rem;
+}
+
+.features-grid, .stats-grid {
+grid-template-columns: 1fr;
+}
+
+.theme-selector {
+flex-direction: column;
+top: 50%;
+right: 20px;
+transform: translateY(-50%);
+}
+
+.ai-image-container {
+height: 300px;
+}
+
+.ai-image-overlay {
+font-size: 1.5rem;
+}
+
+.stat-number {
+font-size: 2.5rem;
+}
+}
+
+/* Animation for background */
+.moving-bg {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1;
+overflow: hidden;
+}
+
+.bg-shape {
+position: absolute;
+border-radius: 50%;
+filter: blur(60px);
+opacity: 0.3;
+animation: moveShape 20s linear infinite;
+}
+
+@keyframes moveShape {
+0% { transform: translate(0, 0) rotate(0deg); }
+25% { transform: translate(100px, 100px) rotate(90deg); }
+50% { transform: translate(0, 200px) rotate(180deg); }
+75% { transform: translate(-100px, 100px) rotate(270deg); }
+100% { transform: translate(0, 0) rotate(360deg); }
+}
+</style></head>
+<body>
+<div class="moving-bg">
+<div class="bg-shape" style="width: 400px; height: 400px; background: #60a5fa; top: 20%; left: 10%;"></div>
+<div class="bg-shape" style="width: 300px; height: 300px; background: #8b5cf6; top: 60%; left: 70%;"></div>
+<div class="bg-shape" style="width: 250px; height: 250px; background: #ec4899; top: 80%; left: 30%;"></div>
+</div>
+
+<div class="theme-selector">
+<div class="theme-btn dark-theme active" data-theme="dark" title="Темна тема"></div>
+<div class="theme-btn pastel-theme" data-theme="pastel" title="Пастельна тема"></div>
+</div>
+
+<header>
+<div class="container">
+<div class="floating-elements" id="floatingElements"></div>
+</div>
+</header>
+
+<main>
+<section class="hero">
+<div class="container">
+<h1>Штучний Інтелект: Майбутнє Вже Тут</h1>
+<p>Відкрийте для себе революційні технології, які змінюють наш світ. Штучний інтелект більше не фантастика — це реальність, яка формує наше сьогодення та майбутнє.</p>
+</div>
+</section>
+
+<div class="ai-image-container">
+<div class="ai-image-overlay">Нейронні мережі та штучний інтелект<br>трансформують наше майбутнє вже сьогодні</div>
+</div>
+
+<section class="features">
+<div class="container">
+<h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Як ШІ змінює світ</h2>
+<p style="text-align: center; max-width: 700px; margin: 0 auto 50px; opacity: 0.8;">Штучний інтелект проникає у всі сфери нашого життя, роблячи його простішим, ефективнішим та цікавішим.</p>
+
+<div class="features-grid">
+<div class="feature-card">
+<div class="feature-icon">🧠</div>
+<h3>Машинне навчання</h3>
+<p>Алгоритми, які вчаться на даних та постійно вдосконалюються, дозволяючи комп'ютерам вирішувати складні завдання без явного програмування.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">🗣️</div>
+<h3>Обробка мови</h3>
+<p>Системи, здатні розуміти, інтерпретувати та генерувати людську мову, роблячи спілкування з машинами природним та інтуїтивним.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">👁️</div>
+<h3>Комп'ютерний зір</h3>
+<p>Технології, що дозволяють машинам "бачити" та інтерпретувати візуальну інформацію, розпізнавати об'єкти, обличчя та навіть емоції.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">🤖</div>
+<h3>Робототехніка</h3>
+<p>Інтелектуальні роботи, здатні виконувати складні завдання, адаптуватися до змінного середовища та взаємодіяти з людьми.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">🎨</div>
+<h3>Творчий ШІ</h3>
+<p>Генерація мистецтва, музики, текстів та дизайну — ШІ стає співавтором у творчих процесах, розширюючи межі людської уяви.</p>
+</div>
+<div class="feature-card">
+<div class="feature-icon">⚡</div>
+<h3>Автоматизація</h3>
+<p>Оптимізація бізнес-процесів, виробничих ліній та повсякденних завдань, звільняючи людей для важливіших та творчих занять.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="stats">
+<div class="container">
+<h2 style="font-size: 2.5rem; margin-bottom: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Цифри ШІ-революції</h2>
+<p style="max-width: 700px; margin: 0 auto 50px; opacity: 0.8;">Статистика, яка показує масштаби впливу штучного інтелекту на наш світ.</p>
+
+<div class="stats-grid">
+<div class="stat-item">
+<div class="stat-number">85%</div>
+<div class="stat-label">Компаній впроваджують ШІ</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">$15.7T</div>
+<div class="stat-label">До 2030 року у світовій економіці</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">40%</div>
+<div class="stat-label">Робочих завдань автоматизуються</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">97%</div>
+<div class="stat-label">Лідерів вважають ШІ ключовим</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="contact">
+<div class="container">
+<h2 style="font-size: 2.5rem; margin-bottom: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Зворотній зв'язок</h2>
+<p style="max-width: 700px; margin: 0 auto 40px; opacity: 0.8;">Поділіться своїми думками про майбутнє штучного інтелекту. Ми цінуємо вашу думку!</p>
+
+<div class="contact-form">
+<form id="feedbackForm">
+<div class="form-group">
+<label for="name">Ваше ім'я</label>
+<input type="text" id="name" class="form-control" placeholder="Введіть ваше ім'я" required>
+</div>
+<div class="form-group">
+<label for="email">Електронна пошта</label>
+<input type="email" id="email" class="form-control" placeholder="Введіть ваш email" required>
+</div>
+<div class="form-group">
+<label for="message">Ваше повідомлення</label>
+<textarea id="message" class="form-control" placeholder="Розкажіть нам про ваші думки щодо ШІ..." required></textarea>
+</div>
+<button type="submit" class="submit-btn">Надіслати повідомлення</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">
+<p>© 2023 Штучний Інтелект: Технології Майбутнього. Всі права захищені.</p>
+</div>
+</footer>
+
+<script>
+// Theme switching functionality
+const themeButtons = document.querySelectorAll('.theme-btn');
+const body = document.body;
+
+// Check for saved theme or use dark as default
+const savedTheme = localStorage.getItem('theme') || 'dark';
+body.className = savedTheme;
+updateActiveButton(savedTheme);
+
+themeButtons.forEach(button => {
+button.addEventListener('click', () => {
+// Remove active class from all buttons
+themeButtons.forEach(btn => btn.classList.remove('active'));
+
+// Add active class to clicked button
+button.classList.add('active');
+
+// Set theme
+const theme = button.getAttribute('data-theme');
+body.className = theme;
+
+// Save theme preference
+try {
+localStorage.setItem('theme', theme);
+} catch(e) {
+console.log('LocalStorage не доступний');
+}
+});
+});
+
+function updateActiveButton(theme) {
+themeButtons.forEach(btn => {
+if (btn.getAttribute('data-theme') === theme) {
+btn.classList.add('active');
+} else {
+btn.classList.remove('active');
+}
+});
+}
+
+// Create floating AI elements
+const floatingElements = document.getElementById('floatingElements');
+for (let i = 0; i < 15; i++) {
+const element = document.createElement('div');
+element.className = 'ai-element';
+element.style.width = `${Math.random() * 50 + 20}px`;
+element.style.height = element.style.width;
+element.style.left = `${Math.random() * 100}%`;
+element.style.top = `${Math.random() * 100}%`;
+element.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+element.style.animationDelay = `${Math.random() * 5}s`;
+element.style.animationDuration = `${Math.random() * 10 + 10}s`;
+floatingElements.appendChild(element);
+}
+
+// Form submission
+const feedbackForm = document.getElementById('feedbackForm');
+feedbackForm.addEventListener('submit', function(e) {
+e.preventDefault();
+
+// Get form values
+const name = document.getElementById('name').value;
+const email = document.getElementById('email').value;
+const message = document.getElementById('message').value;
+
+// In a real application, you would send this data to a server
+// For this demo, we'll just show an alert
+alert(`Дякуємо, ${name}! Ваше повідомлення отримано. Ми відповімо вам на ${email} найближчим часом.`);
+
+// Reset form
+feedbackForm.reset();
+});
+
+// Add animation to header elements
+const header = document.querySelector('header');
+setInterval(() => {
+const bubble = document.createElement('div');
+bubble.style.position = 'absolute';
+bubble.style.width = `${Math.random() * 20 + 10}px`;
+bubble.style.height = bubble.style.width;
+bubble.style.borderRadius = '50%';
+bubble.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+bubble.style.left = `${Math.random() * 100}%`;
+bubble.style.top = '100%';
+bubble.style.animation = 'floatUp 5s linear forwards';
+
+const keyframes = `
+@keyframes floatUp {
+0% { transform: translateY(0) scale(1); opacity: 0.5; }
+100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
+`;
+
+const styleSheet = document.createElement('style');
+styleSheet.textContent = keyframes;
+document.head.appendChild(styleSheet);
+
+header.appendChild(bubble);
+
+// Remove bubble after animation
+setTimeout(() => {
+bubble.remove();
+}, 5000);
+}, 500);
+</script></body>
+</html>
