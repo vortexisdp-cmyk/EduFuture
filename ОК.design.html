@@ -5,59 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Олексій Коваленко - Веб-дизайнер</title>
     <style>
+        :root {
+            /* Основные цвета по умолчанию (терракотовая тема) */
+            --primary: #E2725B;
+            --primary-rgb: 226, 114, 91;
+            --secondary: #D45D44;
+            --accent: #FF9B7B;
+            --bg-primary: #1F1614;
+            --bg-secondary: #281E1C;
+            --bg-card: #2B201D;
+            --text-primary: #F8F1E9;
+            --text-secondary: #D6C6BC;
+            --text-muted: #A39994;
+            --border: rgba(226, 114, 91, 0.3);
+            --success: #4CAF50;
+            --error: #F44336;
+            --glass-border: rgba(226, 114, 91, 0.2);
+        }
+
+        .orange-theme {
+            --primary: #FF9900;
+            --primary-rgb: 255, 153, 0;
+            --secondary: #E68A00;
+            --accent: #FFB340;
+            --bg-primary: #1A110A;
+            --bg-secondary: #21170F;
+            --bg-card: #2D1E0D;
+            --text-primary: #FDF6E3;
+            --text-secondary: #E8DCC8;
+            --text-muted: #B09F8C;
+            --border: rgba(255, 153, 0, 0.3);
+            --glass-border: rgba(255, 153, 0, 0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', 'Arial', sans-serif;
             line-height: 1.6;
-            background: #0f0f23;
-            color: #e0e0e0;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             overflow-x: hidden;
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
+
         /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 15, 35, 0.95);
-            /* backdrop-filter: blur(20px); */ /* Іноді викликає проблеми на мобільних */
+            background: rgba(31, 22, 20, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
-            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+            border-bottom: 1px solid var(--glass-border);
         }
+
+        .orange-theme nav {
+            background: rgba(26, 17, 10, 0.95);
+        }
+
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #64ffda;
+            color: var(--primary);
             text-decoration: none;
-            z-index: 1001; /* Вищий z-index, щоб лого завжди було клікабельне */
+            z-index: 1001;
         }
+
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
+
         .nav-links a {
-            color: #e0e0e0;
+            color: var(--text-primary);
             text-decoration: none;
             transition: color 0.3s ease;
             position: relative;
             padding: 5px 0;
-            font-weight: 500; /* Трохи жирніший шрифт для кращої читабельності */
+            font-weight: 500;
         }
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -65,27 +111,32 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #64ffda;
+            background: var(--primary);
             transition: width 0.3s ease;
         }
+
         .nav-links a:hover,
         .nav-links a.active {
-            color: #64ffda;
+            color: var(--primary);
         }
+
         .nav-links a:hover::after,
         .nav-links a.active::after {
             width: 100%;
         }
+
         /* Page Styles */
         .page {
             display: none;
             min-height: 100vh;
-            padding-top: 80px; /* Враховує висоту фіксованого хедера */
+            padding-top: 80px;
         }
+
         .page.active {
             display: block;
-            animation: fadeIn 0.5s ease forwards; /* Плавне з'явлення сторінки */
+            animation: fadeIn 0.5s ease forwards;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -98,82 +149,92 @@
             min-height: calc(100vh - 80px);
             position: relative;
         }
+
         .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
         }
+
         .hero-text h1 {
             font-size: 3.5rem;
             font-weight: bold;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #64ffda, #8892b0);
+            background: linear-gradient(45deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: fadeInUp 1s ease;
         }
+
         .hero-text h2 {
             font-size: 1.8rem;
-            color: #8892b0;
+            color: var(--text-muted);
             margin-bottom: 1.5rem;
             animation: fadeInUp 1s ease 0.2s both;
         }
+
         .hero-text p {
             font-size: 1.1rem;
             margin-bottom: 2rem;
-            opacity: 0.8;
+            color: var(--text-secondary);
             animation: fadeInUp 1s ease 0.4s both;
         }
+
         .hero-buttons {
             display: flex;
             gap: 1rem;
             animation: fadeInUp 1s ease 0.6s both;
-            flex-wrap: wrap; /* Дозволяє кнопкам переноситися на новий рядок на малих екранах */
+            flex-wrap: wrap;
         }
-        /* Покращений стиль кнопок - більш контрастний і клікабельний */
+
         .btn {
             padding: 12px 30px;
-            border: 2px solid #64ffda;
+            border: 2px solid var(--primary);
             background: transparent;
-            color: #64ffda;
+            color: var(--primary);
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-weight: bold;
             transition: all 0.3s ease;
             cursor: pointer;
             font-family: inherit;
-            display: inline-block; /* Важливо для правильного розміру */
-            text-align: center; /* Центрування тексту */
-            min-width: 120px; /* Мінімальна ширина для кращої клікабельності */
+            display: inline-block;
+            text-align: center;
+            min-width: 120px;
         }
+
         .btn:hover {
-            background: rgba(100, 255, 218, 0.1);
+            background: rgba(var(--primary-rgb), 0.1);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+            box-shadow: 0 10px 20px rgba(var(--primary-rgb), 0.2);
         }
+
         .btn.primary {
-            background: #64ffda;
-            color: #0a0a1a; /* Темніший колір тексту для кращого контрасту */
-            border-color: #64ffda;
+            background: var(--primary);
+            color: var(--bg-primary);
+            border-color: var(--primary);
         }
+
         .btn.primary:hover {
             background: transparent;
-            color: #64ffda;
+            color: var(--primary);
         }
+
         .hero-image {
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
         }
+
         .profile-container {
             width: 300px;
             height: 300px;
-            border: 3px solid #64ffda;
+            border: 3px solid var(--primary);
             border-radius: 50%;
-            background: linear-gradient(45deg, rgba(100, 255, 218, 0.1), rgba(136, 146, 176, 0.1));
+            background: linear-gradient(45deg, rgba(var(--primary-rgb), 0.1), rgba(var(--primary-rgb), 0.2));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -182,6 +243,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .profile-container::before {
             content: '';
             position: absolute;
@@ -189,58 +251,67 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(transparent, rgba(100, 255, 218, 0.3), transparent);
+            background: conic-gradient(transparent, rgba(var(--primary-rgb), 0.3), transparent);
             animation: rotate 4s linear infinite;
         }
+
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
         }
+
         @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
         /* Portfolio Page */
         .portfolio-section {
             padding: 4rem 0;
         }
+
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            color: #64ffda;
+            color: var(--primary);
             margin-bottom: 3rem;
             position: relative;
         }
+
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
+
         .project-card {
-            background: rgba(26, 26, 46, 0.8);
-            border: 1px solid rgba(100, 255, 218, 0.2);
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.3s ease;
             cursor: pointer;
-            position: relative; /* Для правильного позиціонування оверлею */
+            position: relative;
         }
+
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(100, 255, 218, 0.2);
-            border-color: #64ffda;
+            box-shadow: 0 20px 40px rgba(var(--primary-rgb), 0.2);
+            border-color: var(--primary);
         }
+
         .project-image {
             height: 200px;
-            background: linear-gradient(135deg, #64ffda, #8892b0);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: #0a0a1a; /* Темніший колір для кращої видимості емоджі */
+            color: var(--bg-primary);
             position: relative;
             overflow: hidden;
         }
+
         .project-image::before {
             content: '';
             position: absolute;
@@ -251,178 +322,209 @@
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
             transition: left 0.5s ease;
         }
+
         .project-card:hover .project-image::before {
             left: 100%;
         }
+
         .project-info {
             padding: 1.5rem;
         }
+
         .project-title {
             font-size: 1.3rem;
-            color: #64ffda;
+            color: var(--primary);
             margin-bottom: 0.5rem;
             font-weight: bold;
         }
+
         .project-tech {
-            color: #8892b0;
+            color: var(--text-muted);
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
+
         .project-description {
-            opacity: 0.8;
+            color: var(--text-secondary);
             margin-bottom: 1rem;
         }
+
         /* About Page */
         .about-section {
             padding: 4rem 0;
         }
+
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
         }
+
         .about-text h3 {
-            color: #64ffda;
+            color: var(--primary);
             font-size: 1.5rem;
             margin-bottom: 1rem;
         }
+
         .about-text p {
             margin-bottom: 1.5rem;
-            opacity: 0.8;
+            color: var(--text-secondary);
         }
+
         .skills {
             margin-top: 2rem;
         }
+
         .skills h4 {
-            color: #64ffda;
+            color: var(--primary);
             margin-bottom: 1rem;
         }
+
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1rem;
         }
+
         .skill-item {
-            background: rgba(26, 26, 46, 0.6);
+            background: var(--bg-card);
             padding: 1rem;
             border-radius: 10px;
             text-align: center;
-            border: 1px solid rgba(100, 255, 218, 0.2);
+            border: 1px solid var(--glass-border);
             transition: all 0.3s ease;
         }
+
         .skill-item:hover {
-            border-color: #64ffda;
-            background: rgba(100, 255, 218, 0.1);
-            transform: translateY(-3px); /* Легкий ефект при наведенні */
+            border-color: var(--primary);
+            background: rgba(var(--primary-rgb), 0.1);
+            transform: translateY(-3px);
         }
+
         .skill-icon {
             font-size: 2rem;
             margin-bottom: 0.5rem;
         }
+
         .contact-info {
-            background: rgba(26, 26, 46, 0.6);
+            background: var(--bg-card);
             padding: 2rem;
             border-radius: 15px;
-            border: 1px solid rgba(100, 255, 218, 0.2);
+            border: 1px solid var(--glass-border);
         }
+
         .contact-item {
             display: flex;
-            align-items: flex-start; /* Вирівнювання по верхньому краю */
+            align-items: flex-start;
             margin-bottom: 1rem;
             gap: 1rem;
         }
+
         .contact-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(45deg, #64ffda, #8892b0);
+            background: linear-gradient(45deg, var(--primary), var(--accent));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #0a0a1a; /* Темніший колір для кращого контрасту */
+            color: var(--bg-primary);
             font-weight: bold;
-            flex-shrink: 0; /* Запобігає зменшенню іконки */
+            flex-shrink: 0;
         }
-        /* Contact Form on Home Page */
+
+        /* Contact Form */
         .contact-form {
-            background: rgba(26, 26, 46, 0.8);
+            background: var(--bg-card);
             padding: 2rem;
             border-radius: 15px;
-            border: 1px solid rgba(100, 255, 218, 0.2);
+            border: 1px solid var(--glass-border);
             margin-top: 3rem;
-            max-width: 600px; /* Обмежує ширину форми на великих екранах */
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
+
         .form-group {
             margin-bottom: 1.5rem;
             position: relative;
         }
+
         .form-group label {
             display: block;
-            color: #64ffda;
+            color: var(--primary);
             margin-bottom: 0.5rem;
             font-weight: bold;
         }
+
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            background: rgba(15, 15, 35, 0.8);
-            border: 1px solid rgba(100, 255, 218, 0.3);
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-border);
             border-radius: 8px;
-            color: #e0e0e0;
+            color: var(--text-primary);
             font-family: inherit;
             transition: all 0.3s ease;
         }
+
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #64ffda;
-            box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.3);
         }
-        /* Mobile Menu - ВИПРАВЛЕНО */
+
+        /* Mobile Menu */
         .mobile-menu {
             display: none;
-            color: #64ffda;
-            font-size: 1.8rem; /* Трохи більший розмір */
+            color: var(--primary);
+            font-size: 1.8rem;
             cursor: pointer;
-            z-index: 1001; /* Вищий z-index */
-            padding: 10px; /* Додатковий простір для кліку */
+            z-index: 1001;
+            padding: 10px;
+            background: none;
+            border: none;
         }
+
         .mobile-nav {
             position: fixed;
             top: 80px;
-            right: -300px; /* Прихована за межами екрану */
-            width: 280px; /* Трохи менша ширина */
+            right: -300px;
+            width: 280px;
             height: calc(100vh - 80px);
-            background: rgba(15, 15, 35, 0.98); /* Менше прозорості */
-            /* backdrop-filter: blur(10px); */ /* Іноді проблеми на мобільних */
+            background: var(--bg-secondary);
             transition: right 0.3s ease;
-            padding: 2rem 1.5rem; /* Внутрішні відступи */
-            border-left: 1px solid rgba(100, 255, 218, 0.3); /* Більш виразна межа */
-            z-index: 999; /* Під лого, але над іншим контентом */
+            padding: 2rem 1.5rem;
+            border-left: 1px solid var(--glass-border);
+            z-index: 999;
         }
+
         .mobile-nav.active {
-            right: 0; /* Показується */
+            right: 0;
         }
+
         .mobile-nav a {
             display: block;
-            color: #e0e0e0;
+            color: var(--text-primary);
             text-decoration: none;
-            padding: 1rem 0; /* Більше вертикального простору */
-            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--glass-border);
             transition: color 0.3s ease;
-            font-size: 1.1rem; /* Трохи більший шрифт */
+            font-size: 1.1rem;
         }
+
         .mobile-nav a:last-child {
-             border-bottom: none; /* Немає межі після останнього елемента */
+            border-bottom: none;
         }
+
         .mobile-nav a:hover,
         .mobile-nav a.active {
-            color: #64ffda;
+            color: var(--primary);
         }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -434,26 +536,7 @@
                 transform: translateY(0);
             }
         }
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
+
         /* Background Particles */
         .particles {
             position: fixed;
@@ -463,14 +546,16 @@
             height: 100%;
             z-index: -1;
         }
+
         .particle {
             position: absolute;
             width: 2px;
             height: 2px;
-            background: #64ffda;
+            background: var(--primary);
             border-radius: 50%;
             animation: particleFloat 20s linear infinite;
         }
+
         @keyframes particleFloat {
             0% {
                 transform: translateY(100vh) translateX(0);
@@ -487,6 +572,37 @@
                 opacity: 0;
             }
         }
+
+        /* Theme Switcher */
+        .theme-switcher {
+            display: flex;
+            gap: 10px;
+            margin-left: 2rem;
+            align-items: center;
+        }
+
+        .theme-btn {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-btn.active {
+            border-color: var(--text-primary);
+            transform: scale(1.1);
+        }
+
+        .theme-btn.terracotta {
+            background: linear-gradient(45deg, #E2725B, #D45D44);
+        }
+
+        .theme-btn.orange {
+            background: linear-gradient(45deg, #FF9900, #E68A00);
+        }
+
         /* Responsive */
         @media (max-width: 992px) {
             .hero-content,
@@ -501,12 +617,13 @@
                 height: 250px;
             }
         }
+
         @media (max-width: 768px) {
             .nav-links {
-                display: none; /* Приховуємо десктопне меню */
+                display: none;
             }
             .mobile-menu {
-                display: block; /* Показуємо мобільне меню */
+                display: block;
             }
             .hero-content,
             .about-content {
@@ -521,34 +638,30 @@
                 font-size: 1.5rem;
             }
             .hero-buttons {
-                justify-content: center; /* Центруємо кнопки на мобільних */
+                justify-content: center;
             }
             .skills-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .portfolio-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Адаптивніша сітка */
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
             .section-title {
                 font-size: 2rem;
             }
             .contact-item {
-                flex-direction: column; /* Іконка над текстом на мобільних */
+                flex-direction: column;
                 align-items: center;
                 text-align: center;
             }
             .contact-icon {
-                 margin-bottom: 0.5rem;
+                margin-bottom: 0.5rem;
             }
-            .project-links {
-                 flex-direction: column; /* Кнопки один під одним на мобільних */
-                 align-items: center;
-                 gap: 0.5rem;
-            }
-            .project-links a {
-                 width: 80%; /* Ширина кнопок на мобільних */
+            .theme-switcher {
+                margin-left: 1rem;
             }
         }
+
         @media (max-width: 480px) {
             .container {
                 padding: 0 15px;
@@ -576,75 +689,83 @@
                 font-size: 0.9rem;
             }
             .hero-buttons {
-                 gap: 0.7rem;
+                gap: 0.7rem;
             }
         }
+
         /* Footer */
         footer {
-            background: rgba(26, 26, 46, 0.8);
+            background: var(--bg-card);
             padding: 2rem 0;
             text-align: center;
-            border-top: 1px solid rgba(100, 255, 218, 0.2);
+            border-top: 1px solid var(--glass-border);
             margin-top: 4rem;
         }
+
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin-bottom: 1rem;
-            flex-wrap: wrap; /* Дозволяє іконкам переноситися */
+            flex-wrap: wrap;
         }
+
         .social-links a {
-            width: 45px; /* Трохи більше для кращої клікабельності */
+            width: 45px;
             height: 45px;
-            background: rgba(100, 255, 218, 0.1);
-            border: 1px solid rgba(100, 255, 218, 0.3);
+            background: rgba(var(--primary-rgb), 0.1);
+            border: 1px solid var(--glass-border);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #64ffda;
+            color: var(--primary);
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 1.2rem; /* Більший розмір іконок */
+            font-size: 1.2rem;
         }
+
         .social-links a:hover {
-            background: #64ffda;
-            color: #0a0a1a;
+            background: var(--primary);
+            color: var(--bg-primary);
             transform: translateY(-3px);
         }
+
         /* Portfolio specific styles */
         .filter-buttons {
             display: flex;
             justify-content: center;
-            gap: 0.8rem; /* Трохи менше відступи */
+            gap: 0.8rem;
             margin-bottom: 3rem;
             flex-wrap: wrap;
         }
+
         .filter-btn {
-            padding: 8px 16px; /* Трохи менше padding */
+            padding: 8px 16px;
             background: transparent;
-            border: 1px solid rgba(100, 255, 218, 0.3);
-            color: #e0e0e0;
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: inherit;
-            font-size: 0.9rem; /* Трохи менший шрифт */
+            font-size: 0.9rem;
         }
+
         .filter-btn:hover,
         .filter-btn.active {
-            background: rgba(100, 255, 218, 0.1);
-            border-color: #64ffda;
-            color: #64ffda;
+            background: rgba(var(--primary-rgb), 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
         }
+
         .project-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(15, 15, 35, 0.9);
+            background: rgba(31, 22, 20, 0.9);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -655,58 +776,78 @@
             padding: 1rem;
             text-align: center;
         }
+
+        .orange-theme .project-overlay {
+            background: rgba(26, 17, 10, 0.9);
+        }
+
         .project-card:hover .project-overlay {
             opacity: 1;
         }
+
         .project-overlay h4 {
-             color: #64ffda;
-             margin-bottom: 0.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
         }
+
         .project-overlay p {
-             opacity: 0.8;
-             margin-bottom: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
         }
+
         .project-links {
             display: flex;
             gap: 1rem;
         }
+
         .project-links a {
             padding: 8px 16px;
-            background: #64ffda;
-            color: #0a0a1a;
+            background: var(--primary);
+            color: var(--bg-primary);
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             transition: all 0.3s ease;
             font-size: 0.9rem;
         }
+
         .project-links a:hover {
-            background: #8892b0;
-            color: #e0e0e0;
+            background: var(--accent);
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
     <!-- Particles Background -->
     <div class="particles" id="particles"></div>
+    
     <!-- Navigation -->
     <nav>
         <div class="container nav-container">
             <a href="#" class="logo">ОК.design</a>
+            
+            <div class="theme-switcher">
+                <button class="theme-btn terracotta active" data-theme="terracotta" title="Теракотова тема"></button>
+                <button class="theme-btn orange" data-theme="orange" title="Помаранчева тема"></button>
+            </div>
+            
             <ul class="nav-links">
                 <li><a href="#" class="nav-link active" data-page="home">Головна</a></li>
                 <li><a href="#" class="nav-link" data-page="portfolio">Портфоліо</a></li>
                 <li><a href="#" class="nav-link" data-page="about">Про мене</a></li>
             </ul>
-            <div class="mobile-menu" id="mobileMenu">☰</div>
+            
+            <button class="mobile-menu" id="mobileMenu">☰</button>
         </div>
     </nav>
-    <!-- Mobile Navigation - ВИПРАВЛЕНО -->
+    
+    <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
         <a href="#" class="mobile-link nav-link" data-page="home">Головна</a>
         <a href="#" class="mobile-link nav-link" data-page="portfolio">Портфоліо</a>
         <a href="#" class="mobile-link nav-link" data-page="about">Про мене</a>
     </div>
+
     <!-- Home Page -->
     <div class="page active" id="home">
         <section class="hero">
@@ -729,11 +870,12 @@
                 </div>
             </div>
         </section>
+        
         <!-- Quick Contact -->
         <section class="contact-section" id="contact">
             <div class="container">
                 <div class="contact-form">
-                    <h3 style="color: #64ffda; margin-bottom: 1.5rem; text-align: center;">Почнемо співпрацю</h3>
+                    <h3 style="color: var(--primary); margin-bottom: 1.5rem; text-align: center;">Почнемо співпрацю</h3>
                     <form id="contactForm">
                         <div class="form-group">
                             <label for="name">Ім'я *</label>
@@ -757,6 +899,7 @@
             </div>
         </section>
     </div>
+
     <!-- Portfolio Page -->
     <div class="page" id="portfolio">
         <section class="portfolio-section">
@@ -769,6 +912,7 @@
                     <button class="filter-btn" data-filter="corporate">Корпоративні</button>
                 </div>
                 <div class="portfolio-grid">
+                    <!-- Project cards remain the same -->
                     <div class="project-card" data-category="landing">
                         <div class="project-image">🚀</div>
                         <div class="project-overlay">
@@ -785,6 +929,7 @@
                             <p class="project-description">Інноваційний лендінг з анімаціями та сучасним дизайном для технологічного стартапу.</p>
                         </div>
                     </div>
+                    
                     <div class="project-card" data-category="ecommerce">
                         <div class="project-image">🛍️</div>
                         <div class="project-overlay">
@@ -801,6 +946,7 @@
                             <p class="project-description">Повнофункціональний інтернет-магазин з системою оплати та адмін-панеллю.</p>
                         </div>
                     </div>
+                    
                     <div class="project-card" data-category="corporate">
                         <div class="project-image">🏢</div>
                         <div class="project-overlay">
@@ -817,6 +963,7 @@
                             <p class="project-description">Професійний корпоративний сайт з CMS та багатомовною підтримкою.</p>
                         </div>
                     </div>
+                    
                     <div class="project-card" data-category="landing">
                         <div class="project-image">🎨</div>
                         <div class="project-overlay">
@@ -833,6 +980,7 @@
                             <p class="project-description">Креативне портфоліо з унікальними анімаціями та інтерактивними елементами.</p>
                         </div>
                     </div>
+                    
                     <div class="project-card" data-category="ecommerce">
                         <div class="project-image">🍕</div>
                         <div class="project-overlay">
@@ -849,6 +997,7 @@
                             <p class="project-description">Мобільний додаток для замовлення їжі з геолокацією та онлайн-платежами.</p>
                         </div>
                     </div>
+                    
                     <div class="project-card" data-category="corporate">
                         <div class="project-image">⚕️</div>
                         <div class="project-overlay">
@@ -869,6 +1018,7 @@
             </div>
         </section>
     </div>
+
     <!-- About Page -->
     <div class="page" id="about">
         <section class="about-section">
@@ -911,7 +1061,7 @@
                         </div>
                     </div>
                     <div class="contact-info">
-                        <h3 style="color: #64ffda; margin-bottom: 1.5rem;">Контактна інформація</h3>
+                        <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Контактна інформація</h3>
                         <div class="contact-item">
                             <div class="contact-icon">📧</div>
                             <div>
@@ -941,8 +1091,8 @@
                             </div>
                         </div>
                         <div style="margin-top: 2rem;">
-                            <h4 style="color: #64ffda; margin-bottom: 1rem;">Мій підхід:</h4>
-                            <ul style="list-style: none; opacity: 0.8;">
+                            <h4 style="color: var(--primary); margin-bottom: 1rem;">Мій підхід:</h4>
+                            <ul style="list-style: none; color: var(--text-secondary);">
                                 <li style="margin-bottom: 0.5rem;">✓ Дослідження та аналіз</li>
                                 <li style="margin-bottom: 0.5rem;">✓ Прототипування та тестування</li>
                                 <li style="margin-bottom: 0.5rem;">✓ Сучасний responsive дизайн</li>
@@ -951,30 +1101,32 @@
                         </div>
                     </div>
                 </div>
+                
                 <!-- Experience Timeline -->
                 <div style="margin-top: 4rem;">
-                    <h3 style="color: #64ffda; text-align: center; margin-bottom: 2rem;">Досвід роботи</h3>
+                    <h3 style="color: var(--primary); text-align: center; margin-bottom: 2rem;">Досвід роботи</h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                        <div style="background: rgba(26, 26, 46, 0.6); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(100, 255, 218, 0.2);">
-                            <h4 style="color: #64ffda;">Senior Web Designer</h4>
-                            <p style="color: #8892b0; margin-bottom: 1rem;">DigitalAgency • 2022-2025</p>
-                            <p style="opacity: 0.8;">Розробка веб-сайтів для великих клієнтів, керування командою дизайнерів, створення design systems.</p>
+                        <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--glass-border);">
+                            <h4 style="color: var(--primary);">Senior Web Designer</h4>
+                            <p style="color: var(--text-muted); margin-bottom: 1rem;">DigitalAgency • 2022-2025</p>
+                            <p style="color: var(--text-secondary);">Розробка веб-сайтів для великих клієнтів, керування командою дизайнерів, створення design systems.</p>
                         </div>
-                        <div style="background: rgba(26, 26, 46, 0.6); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(100, 255, 218, 0.2);">
-                            <h4 style="color: #64ffda;">UI/UX Designer</h4>
-                            <p style="color: #8892b0; margin-bottom: 1rem;">TechStartup • 2020-2022</p>
-                            <p style="opacity: 0.8;">Дизайн мобільних додатків та веб-платформ, проведення user research та A/B тестування.</p>
+                        <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--glass-border);">
+                            <h4 style="color: var(--primary);">UI/UX Designer</h4>
+                            <p style="color: var(--text-muted); margin-bottom: 1rem;">TechStartup • 2020-2022</p>
+                            <p style="color: var(--text-secondary);">Дизайн мобільних додатків та веб-платформ, проведення user research та A/B тестування.</p>
                         </div>
-                        <div style="background: rgba(26, 26, 46, 0.6); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(100, 255, 218, 0.2);">
-                            <h4 style="color: #64ffda;">Freelance Designer</h4>
-                            <p style="color: #8892b0; margin-bottom: 1rem;">Self-employed • 2019-2020</p>
-                            <p style="opacity: 0.8;">Робота з малим та середнім бізнесом, створення лендінгів та корпоративних сайтів.</p>
+                        <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 10px; border: 1px solid var(--glass-border);">
+                            <h4 style="color: var(--primary);">Freelance Designer</h4>
+                            <p style="color: var(--text-muted); margin-bottom: 1rem;">Self-employed • 2019-2020</p>
+                            <p style="color: var(--text-secondary);">Робота з малим та середнім бізнесом, створення лендінгів та корпоративних сайтів.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -988,13 +1140,52 @@
             <p>&copy; 2025 Олексій Коваленко. Всі права захищені.</p>
         </div>
     </footer>
+
     <script>
+        // Theme switching
+        function initThemeSwitcher() {
+            const themeButtons = document.querySelectorAll('.theme-btn');
+            const savedTheme = localStorage.getItem('theme') || 'terracotta';
+            
+            // Apply saved theme
+            if (savedTheme === 'orange') {
+                document.body.classList.add('orange-theme');
+                document.querySelector('.theme-btn.orange').classList.add('active');
+                document.querySelector('.theme-btn.terracotta').classList.remove('active');
+            }
+            
+            themeButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const theme = btn.dataset.theme;
+                    
+                    // Update active button
+                    themeButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Apply theme
+                    if (theme === 'orange') {
+                        document.body.classList.add('orange-theme');
+                    } else {
+                        document.body.classList.remove('orange-theme');
+                    }
+                    
+                    // Save preference
+                    localStorage.setItem('theme', theme);
+                    
+                    // Update particles
+                    createParticles();
+                });
+            });
+        }
+
         // Create particles
         function createParticles() {
             const particles = document.getElementById('particles');
-            // Очищуємо перед створенням, щоб уникнути дублювання
             particles.innerHTML = '';
-            for (let i = 0; i < 50; i++) {
+            
+            const particleCount = window.innerWidth < 768 ? 30 : 50;
+            
+            for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
@@ -1003,9 +1194,10 @@
                 particles.appendChild(particle);
             }
         }
+
         // Page navigation
         function initNavigation() {
-            const navLinks = document.querySelectorAll('.nav-link'); // Включає як .nav-link, так і .mobile-link
+            const navLinks = document.querySelectorAll('.nav-link');
             const pages = document.querySelectorAll('.page');
             const mobileMenu = document.getElementById('mobileMenu');
             const mobileNav = document.getElementById('mobileNav');
@@ -1014,33 +1206,39 @@
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetPage = this.getAttribute('data-page');
+                    
                     // Hide all pages
                     pages.forEach(page => {
                         page.classList.remove('active');
                     });
+                    
                     // Show target page
                     const targetElement = document.getElementById(targetPage);
                     if (targetElement) {
                         targetElement.classList.add('active');
                     }
-                    // Update active nav link for both desktop and mobile
+                    
+                    // Update active nav link
                     document.querySelectorAll('.nav-link').forEach(nav => {
                         nav.classList.remove('active');
                     });
-                    // Активна посилання в обох меню
+                    
                     document.querySelectorAll(`.nav-link[data-page="${targetPage}"]`).forEach(link => {
                         link.classList.add('active');
                     });
+                    
                     // Close mobile menu
                     mobileNav.classList.remove('active');
+                    
                     // Scroll to top
-                    window.scrollTo({ top: 0, behavior: 'smooth' }); // Плавний скрол
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             });
 
             // Mobile menu toggle
             if (mobileMenu) {
-                mobileMenu.addEventListener('click', () => {
+                mobileMenu.addEventListener('click', (e) => {
+                    e.stopPropagation();
                     mobileNav.classList.toggle('active');
                 });
             }
@@ -1052,22 +1250,25 @@
                 }
             });
         }
+
         // Portfolio filtering
         function initPortfolioFilter() {
             const filterBtns = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
+            
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const filter = btn.getAttribute('data-filter');
+                    
                     // Update active button
                     filterBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
+                    
                     // Filter projects
                     projectCards.forEach(card => {
                         const category = card.getAttribute('data-category');
                         if (filter === 'all' || category === filter) {
                             card.style.display = 'block';
-                            // card.style.animation = 'fadeInUp 0.5s ease'; // Анімація при фільтрації
                         } else {
                             card.style.display = 'none';
                         }
@@ -1075,6 +1276,7 @@
                 });
             });
         }
+
         // Contact form
         function initContactForm() {
             const form = document.getElementById('contactForm');
@@ -1083,252 +1285,54 @@
                     e.preventDefault();
                     const button = this.querySelector('button[type="submit"]');
                     const originalText = button.textContent;
+                    
                     // Form validation
                     const name = document.getElementById('name').value.trim();
                     const email = document.getElementById('email').value.trim();
+                    
                     if (!name || !email) {
-                        // button.textContent = 'Заповніть обов\'язкові поля!';
-                        // button.style.background = '#ff4757';
                         alert('Будь ласка, заповніть обов\'язкові поля (Ім\'я та Email).');
                         return;
                     }
-                    // Simple email validation
+                    
+                    // Email validation
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     if (!emailRegex.test(email)) {
                         alert('Будь ласка, введіть коректну адресу email.');
                         return;
                     }
+                    
                     // Simulate sending
                     button.textContent = 'Відправляємо...';
-                    button.disabled = true; // Вимикаємо кнопку під час відправки
-                    button.style.opacity = '0.7';
+                    button.disabled = true;
+                    
                     setTimeout(() => {
-                         // Тут можна додати реальний запит на сервер (fetch, XMLHttpRequest)
-                         // Наприклад:
-                         // fetch('/send-email', {
-                         //     method: 'POST',
-                         //     body: new FormData(form)
-                         // }).then(response => {
-                         //     if (response.ok) {
-                         //         // Успіх
-                         //         button.textContent = 'Повідомлення надіслано!';
-                         //         button.style.background = '#2ed573';
-                         //         setTimeout(() => {
-                         //             button.textContent = originalText;
-                         //             button.style.background = '';
-                         //             button.disabled = false;
-                         //             button.style.opacity = '';
-                         //             form.reset();
-                         //         }, 3000);
-                         //     } else {
-                         //         throw new Error('Network response was not ok.');
-                         //     }
-                         // }).catch(error => {
-                         //     console.error('Error:', error);
-                         //     button.textContent = 'Помилка!';
-                         //     button.style.background = '#ff4757';
-                         //     setTimeout(() => {
-                         //         button.textContent = originalText;
-                         //         button.style.background = '';
-                         //         button.disabled = false;
-                         //         button.style.opacity = '';
-                         //     }, 2000);
-                         // });
-
-                         // Для демо залишаємо setTimeout
                         button.textContent = 'Повідомлення надіслано!';
-                        button.style.background = '#2ed573';
+                        button.style.background = 'var(--success)';
+                        
                         setTimeout(() => {
                             button.textContent = originalText;
                             button.style.background = '';
                             button.disabled = false;
-                            button.style.opacity = '';
                             form.reset();
                         }, 3000);
                     }, 1500);
                 });
             }
         }
-        // Scroll animations
-        function initScrollAnimations() {
-            // Перевірка підтримки IntersectionObserver
-            if ('IntersectionObserver' in window) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
-                            // Припиняємо спостереження після анімації
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    threshold: 0.1
-                });
-                // Observe elements that should animate on scroll
-                document.querySelectorAll('.project-card, .skill-item, .contact-form, .about-text, .contact-info').forEach(el => {
-                    // Встановлюємо початковий стан для анімації
-                    el.style.opacity = '0';
-                    el.style.transform = 'translateY(30px)';
-                    observer.observe(el);
-                });
-            } else {
-                // Якщо IntersectionObserver не підтримується, показуємо елементи відразу
-                document.querySelectorAll('.project-card, .skill-item, .contact-form, .about-text, .contact-info').forEach(el => {
-                     el.style.opacity = '1';
-                     el.style.transform = 'translateY(0)';
-                });
-            }
-        }
-        // Smooth page transitions
-        function initPageTransitions() {
-             // Стилі для плавного переходу вже додані в CSS
-        }
-        // Header background on scroll
-        function initHeaderEffects() {
-            const nav = document.querySelector('nav');
-            if (nav) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 50) {
-                        nav.style.background = 'rgba(15, 15, 35, 0.98)';
-                        nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
-                    } else {
-                        nav.style.background = 'rgba(15, 15, 35, 0.95)';
-                        nav.style.boxShadow = 'none';
-                    }
-                });
-            }
-        }
-        // Project card hover effects
-        function initProjectEffects() {
-            const projectCards = document.querySelectorAll('.project-card');
-            projectCards.forEach(card => {
-                // Ефекти для десктопу
-                card.addEventListener('mouseenter', function() {
-                    if (window.innerWidth > 768) { // Лише на десктопі
-                        this.style.transform = 'translateY(-10px) scale(1.02)';
-                    }
-                });
-                card.addEventListener('mouseleave', function() {
-                    if (window.innerWidth > 768) { // Лише на десктопі
-                        this.style.transform = 'translateY(0) scale(1)';
-                    }
-                });
-            });
-        }
-        // Typing animation for hero text
-        function initTypingAnimation() {
-            const heroText = document.querySelector('.hero-text p');
-            if (heroText) {
-                const text = heroText.textContent;
-                heroText.textContent = '';
-                // heroText.style.borderRight = '2px solid #64ffda'; // Можна залишити або прибрати
-                let i = 0;
-                const typeWriter = () => {
-                    if (i < text.length) {
-                        heroText.textContent += text.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, 30); // Швидше друкування
-                    } else {
-                        // setTimeout(() => {
-                        //     heroText.style.borderRight = 'none';
-                        // }, 1000);
-                    }
-                };
-                // Затримка перед початком друкування
-                setTimeout(typeWriter, 500);
-            }
-        }
+
         // Initialize all functions
         document.addEventListener('DOMContentLoaded', function() {
+            initThemeSwitcher();
             createParticles();
             initNavigation();
             initPortfolioFilter();
             initContactForm();
-            initScrollAnimations();
-            initPageTransitions();
-            initHeaderEffects();
-            initProjectEffects();
-            initTypingAnimation();
-        });
-        // Add interactive cursor effect (тільки на десктопі)
-        if (window.innerWidth > 768) {
-             document.addEventListener('mousemove', (e) => {
-                // Перевірка наявності елемента
-                let cursor = document.querySelector('.cursor-glow');
-                if (!cursor) {
-                    cursor = document.createElement('div');
-                    cursor.className = 'cursor-glow';
-                    cursor.style.cssText = `
-                        position: fixed;
-                        width: 20px;
-                        height: 20px;
-                        background: radial-gradient(circle, rgba(100, 255, 218, 0.3) 0%, transparent 70%);
-                        border-radius: 50%;
-                        pointer-events: none;
-                        z-index: 9999;
-                        transition: transform 0.1s ease, opacity 0.3s ease;
-                        opacity: 0; /* Початково прихований */
-                    `;
-                    document.body.appendChild(cursor);
-                }
-                // Показуємо курсор при русі
-                cursor.style.opacity = '1';
-                cursor.style.left = e.clientX - 10 + 'px';
-                cursor.style.top = e.clientY - 10 + 'px';
-
-                // Приховуємо курсор через певний час бездіяльності
-                clearTimeout(cursor.hideTimeout);
-                cursor.hideTimeout = setTimeout(() => {
-                    cursor.style.opacity = '0';
-                }, 1000);
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                createParticles();
             });
-        }
-        // Add click ripple effect
-        document.addEventListener('click', (e) => {
-            // Не додаємо ефект на кнопки форми та посилання навігації, щоб не заважати
-            if (e.target.closest('button, a.nav-link, .filter-btn')) {
-                 return;
-            }
-            const ripple = document.createElement('div');
-            ripple.style.cssText = `
-                position: fixed;
-                width: 100px;
-                height: 100px;
-                background: radial-gradient(circle, rgba(100, 255, 218, 0.4) 0%, transparent 70%);
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 9998;
-                left: ${e.clientX - 50}px;
-                top: ${e.clientY - 50}px;
-                animation: rippleEffect 0.6s ease-out forwards;
-            `;
-            document.body.appendChild(ripple);
-            setTimeout(() => {
-                if (ripple.parentNode) {
-                    document.body.removeChild(ripple);
-                }
-            }, 600);
-        });
-        // Add ripple animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes rippleEffect {
-                0% {
-                    transform: scale(0);
-                    opacity: 1;
-                }
-                100% {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Обробка зміни розміру вікна
-        window.addEventListener('resize', function() {
-            // Перестворюємо частинки при зміні розміру
-            createParticles();
         });
     </script>
 </body>
