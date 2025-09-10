@@ -6,7 +6,7 @@
     <title>Тексти, що продають і надихають.</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style id="theme-style">
-        /* Базові стилі для всіх тем */
+        /* Базовые стили для всех тем */
         :root {
             --color-slate-900: #0f172a;
             --color-slate-800: #1e293b;
@@ -32,7 +32,7 @@
             padding: 0;
         }
 
-       /* Тема за замовчуванням (Default) */
+        /* Тема по умолчанию (Default) */
         .theme-default {
             --color-bg-main: #0f172a;
             --color-bg-gradient: linear-gradient(to bottom right, #0f172a, #581c87, #0f172a);
@@ -58,7 +58,7 @@
         }
 
 
-        /* Оранж тема */
+        /* Оранжевая тема */
         .theme-orange {
             --color-bg-main: #0f172a;
             --color-bg-gradient: linear-gradient(to bottom right, #0f172a, #c2410c, #0f172a);
@@ -115,7 +115,7 @@
             --color-gray-500: #9e9e9e;
         }
 
-       /* Загальні стилі */
+        /* Общие стили */
         .min-h-screen { min-height: 100vh; }
         .bg-gradient-to-br { background: var(--color-bg-gradient); }
         .bg-slate-800 { background-color: var(--color-slate-800); }
@@ -246,7 +246,7 @@
           margin-top: 1rem;
         }
 
-      /* Адаптивні класи */
+        /* Адаптивные классы */
         @media (min-width: 768px) {
             .md\:py-32 { padding-top: 8rem; padding-bottom: 8rem; }
             .md\:text-6xl { font-size: 3.75rem; line-height: 1; }
@@ -264,7 +264,7 @@
             .sm\:flex-row { flex-direction: row; }
         }
 
-        /* Спеціальні стилі */
+        /* Специальные стили */
         .hero-section-gradient {
             background: var(--color-hero-text-gradient);
             -webkit-background-clip: text;
@@ -276,7 +276,7 @@
             background: linear-gradient(to right, var(--color-primary-light), var(--color-secondary-light));
         }
 
-        /* Стилі для відео */
+        /* Стили для видео */
 	     .video-container {
 		 aspect-ratio: 16 / 9;
 		 width: 100%;
@@ -306,8 +306,9 @@
 		 }
 
 
-		
-    /* Оновлені стилі для соціальних блоків */
+
+
+        /* Обновленные стили для социальных блоков */
         .social-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr); /* 4 колонки для десктопа */
@@ -318,7 +319,7 @@
 
         @media (max-width: 1024px) {
             .social-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах*/
+                grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
                 gap: 1.5rem;
                 max-width: 500px;
             }
@@ -375,17 +376,17 @@
             font-size: 1.125rem;
         }
         
-        /* Спеціальні стилі для іконок Font Awesome, щоб вони виглядали як емодзі */
+        /* Специальные стили для иконок Font Awesome, чтобы они выглядели как эмодзи */
         .social-block-icon .fa-brands {
             font-size: 3rem; /* Размер иконки */
             color: var(--color-white); /* Цвет иконки */
         }
-        /* Управління розміром іконок Font Awesome при наведенні */
+        /* Управление размером иконок Font Awesome при наведении */
         .social-block:hover .fa-brands {
             transform: scale(1.1);
         }
 
-       /* Перемикач тем */
+        /* Переключатель тем */
         #theme-toggle {
             display: flex;
             align-items: center;
@@ -418,7 +419,7 @@
             background-color: var(--color-white);
         }
 
-        /* Адаптивність */
+        /* Адаптивность */
         @media (max-width: 768px) {
             .video-container {
                 max-width: 100%;
@@ -435,7 +436,7 @@
             }
         }
         
-       /* Нові стилі для верхніх соціальних посилань */
+        /* Новые стили для верхних социальных ссылок */
         .social-links-top {
             position: absolute;
             top: 2rem;
@@ -458,7 +459,7 @@
             transform: scale(1.1);
         }
 
-       /* Додані стилі для контактних блоків */
+        /* Добавленные стили для контактных блоков */
         .social-contact {
             display: grid;
             grid-template-columns: 1fr;
@@ -493,10 +494,10 @@
             
             <div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
                 <div class="max-w-4xl mx-auto text-center transition-all duration-1000 opacity-100 translate-y-0" id="hero-content">
-                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-clip-text text-transparent leading-tight hero-section-gradient">
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent leading-tight hero-section-gradient">
                         Кібербезпека + креатив = наша спільнота
                     </h1>
-                    <p class="text-xl md:text-1xl text-gray-300 mb-8 leading-relaxed">
+                    <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
                         Пропонуємо: копірайтинг, веброзробку, OSINT. Працюємо точно, швидко, адаптивно.
                     </p>
                     
@@ -548,66 +549,44 @@
                 </div>
             </div>
         </section>
-		
-		<section class="py-20" style="background-color: var(--color-slate-800);">
-    <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-8">Відгуки клієнтів</h2>
-            <div class="relative w-full overflow-hidden">
-                <div id="testimonial-container" class="transition-all duration-1000">
-                    <div class="p-8 md:p-12 rounded-2xl border border-slate-700 bg-slate-900 shadow-xl" style="background: linear-gradient(to bottom right, var(--color-slate-900), var(--color-slate-800)); border-color: var(--color-card-border-default);">
-                        <p id="testimonial-text" class="text-lg md:text-xl italic text-testimonials-text mb-6">
-                            "Робота з цим копірайтером змінила наш бізнес! Наші продажі зросли на 40% лише за місяць після оновлення текстів на сайті."
-                        </p>
-                        <p id="testimonial-author" class="text-white font-semibold">- Анна Петрова, CEO маркетингового агентства</p>
-                    </div>
-                </div>
-            </div>
-            <div id="testimonial-indicators" class="flex justify-center items-center mt-8 space-x-2">
-                <button class="w-3 h-3 rounded-full cursor-pointer transition-all duration-300 transform scale-125" style="background-color: var(--color-active-indicator);"></button>
-                <button class="w-3 h-3 rounded-full cursor-pointer transition-all duration-300" style="background-color: var(--color-inactive-indicator);"></button>
-                <button class="w-3 h-3 rounded-full cursor-pointer transition-all duration-300" style="background-color: var(--color-inactive-indicator);"></button>
-            </div>
-        </div>
-    </div>
-</section>
 
- <section class="py-20">
+  <section class="py-20">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
 				
-                 <section class="py-20 relative overflow-hidden">
-    <div class="absolute inset-0 section-background-gradient"></div>
-    <div class="container mx-auto px-4 relative z-10">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Готові збільшити продажі за допомогою якісного контенту?</h2>
-            <p class="text-xl text-gray-300 mb-10">
-                Зв'яжіться зі мною, і я відповім на ваші запитання.
-            </p>
-            <div class="social-contact">
-                <a href="mailto:your_email@example.com" class="social-block">
-                    <span class="social-block-icon">📧</span>
-                    <span class="social-block-text">Email</span>
-                </a>
-                <a href="https://t.me/your_telegram_username" target="_blank" class="social-block">
-                    <span class="social-block-icon">
-                        <i class="fab fa-telegram-plane"></i>
-                    </span>
-                    <span class="social-block-text">Telegram</span>
-                </a>
+                  <section class="py-20 relative overflow-hidden">
+            <div class="absolute inset-0 section-background-gradient"></div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Готовы увеличить продажи с помощью качественного контента?</h2>
+                    <p class="text-xl text-gray-300 mb-10">
+                        Свяжитесь со мной, и я отвечу на ваши вопросы.
+                    </p>
+                    <div class="social-contact">
+                        <a href="mailto:your_email@example.com" class="social-block">
+                            <span class="social-block-icon">📧</span>
+                            <span class="social-block-text">Email</span>
+                        </a>
+                        <a href="https://t.me/your_telegram_username" target="_blank" class="social-block">
+                            <span class="social-block-icon">
+                                <i class="fab fa-telegram-plane"></i>
+                            </span>
+                            <span class="social-block-text">Telegram</span>
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="absolute top-10 right-10 w-40 h-40 rounded-full blur-xl" style="background-color: var(--color-dots-1);"></div>
-    <div class="absolute bottom-10 left-10 w-40 h-40 rounded-full blur-xl" style="background-color: var(--color-dots-2);"></div>
-</section>
+            
+            <div class="absolute top-10 right-10 w-40 h-40 rounded-full blur-xl" style="background-color: var(--color-dots-1);"></div>
+            <div class="absolute bottom-10 left-10 w-40 h-40 rounded-full blur-xl" style="background-color: var(--color-dots-2);"></div>
+        </section>
 
         <footer class="py-20 border-t" style="background-color: var(--color-slate-900); border-color: var(--color-slate-800);">
             <div class="container mx-auto px-4">
                 <div class="text-center">
-                    <a href="https://vortexisdp-cmyk.github.io/EduFuture/portfolio.html" class="text-lg font-semibold transition-colors cursor-pointer" style="color: var(--color-white);" onmouseover="this.style.color = 'var(--color-active-indicator)'" onmouseout="this.style.color = 'var(--color-white)'">Моє портфоліо</a>
+                    <a href="https://vortexisdp-cmyk.github.io/EduFuture/portfolio.html" class="text-lg font-semibold transition-colors cursor-pointer" style="color: var(--color-white);" onmouseover="this.style.color = 'var(--color-active-indicator)'" onmouseout="this.style.color = 'var(--color-white)'">Мое портфолио</a>
 					<p class="text-sm mt-4" style="color: var(--color-gray-500);">
-                        © 2025 Цифра vs Реальність. Усі права захищені.
+                        © 2023 Копирайтер. Все права защищены.
                     </p>
                 </div>
             </div>
@@ -618,16 +597,16 @@
         // Testimonials carousel
         const testimonials = [
             {
-                text: "Робота з цим копірайтером змінила наш бізнес! Наші продажі зросли на 40% лише за місяць після оновлення текстів на сайті.",
+                text: "Работа с этим копирайтером изменила наш бизнес! Наши продажи выросли на 40% всего за месяц после обновления текстов на сайте.",
                 author: "Анна Петрова, CEO маркетингового агентства"
             },
             {
-                text: "SEO-тексти, які написав копірайтер, вивели наш сайт у топ-3 за ключовими запитами. Трафік збільшився втричі!",
-                author: "Дмитро Сидоров, власник інтернет-магазину"
+                text: "SEO-тексты, которые написал копирайтер, вывели наш сайт в топ-3 по ключевым запросам. Трафик увеличился в 3 раза!",
+                author: "Дмитрий Сидоров, владелец интернет-магазина"
             },
             {
-                text: "Контент для нашого блогу став справжнім хітом! Читачі повертаються знову і знову, а показники залучення зросли вдвічіе.",
-                author: "Олена Козлова, редактор освітнього порталу"
+                text: "Контент для нашего блога стал настоящим хитом! Читатели возвращаются снова и снова, а показатели вовлеченности выросли вдвое.",
+                author: "Елена Козлова, редактор образовательного портала"
             }
         ];
 
