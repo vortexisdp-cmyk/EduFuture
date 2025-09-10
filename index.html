@@ -284,6 +284,23 @@
 		 border: 2px solid var(--color-card-hover-border);
 		 
 		 }
+		.video-wrapper {
+		 aspect-ratio: 16 / 9;
+		 width: 100%;
+		 max-width: 800px;
+		 margin: 0 auto;
+		 border-radius: 1rem;
+		 overflow: hidden;
+		 box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+		 border: 2px solid var(--color-card-hover-border);
+		 
+		 }
+		 .video-frame {
+		 width: 100%;
+		 height: 100%;
+		 border: none;
+		 }
+
 
 
 
@@ -415,26 +432,17 @@
             <div class="absolute inset-0 section-background-gradient"></div>
             <div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
                 <div class="max-w-4xl mx-auto text-center transition-all duration-1000 opacity-100 translate-y-0" id="hero-content">
-                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-clip-text text-transparent leading-tight hero-section-gradient">
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent leading-tight hero-section-gradient">
                         Кібербезпека + креатив = наша спільнота
                     </h1>
                     <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
                         Пропонуємо: копірайтинг, веброзробку, OSINT. Працюємо точно, швидко, адаптивно.
                     </p>
                     
-                  <!-- другой класс <iframe width="560" height="315"
-				  
-				  <div class="video-container mb-8">
-                        <iframe 
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                            title="Презентационное видео"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-					-->
-					
-					  <div class="video-container mb-8">
+                
+				<!-- <div> в стилях нужно убрать - video-wrapper и .video-frame и будет по старому
+				
+				<div class="video-container mb-8">
                   <div style="aspect-ratio: 16 / 9; width: 100%; max-width: 800px; margin: 0 auto;">
 				  <iframe
 				  src="https://www.youtube.com/embed/c2e20SJCpgw?autoplay=1&controls=1&modestbranding=1&rel=0"
@@ -443,11 +451,19 @@
 				  allowfullscreen>
 				  </iframe>
 				  </div>
-
-									
-                    <p class="text-lg text-gray-300">
-                        Дивіться презентаційне відео вище, щоб дізнатися більше про мої послуги
-                    </p>
+				 </div> -->
+				  
+				  <div class="video-wrapper mb-8">
+				  <iframe
+				  src="https://www.youtube.com/embed/c2e20SJCpgw?autoplay=1&controls=1&modestbranding=1&rel=0"
+				  class="video-frame"
+				  allow="autoplay; encrypted-media"
+				  allowfullscreen>
+				  </iframe>
+				  </div>
+				  <p class="text-lg text-gray-400 text-center">
+				  Дивіться презентаційне відео вище, щоб дізнатися більше про мої послуги</p
+               
                 </div>
             </div>
             
