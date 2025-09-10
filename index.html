@@ -187,7 +187,12 @@
     margin-bottom: 0;
 }
 
-	@media (max-width: 480px) {
+	@media (max-width: 600px) {
+  .contact-info {
+    grid-template-columns: 1fr; /* один блок на строку */
+    gap: 1.5rem;
+  }
+
   .contact-item {
     padding: 1.5rem;
   }
@@ -200,7 +205,12 @@
     font-size: 1rem;
   }
 }
+.contact-item {
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
 
+		
 		
 		
 
