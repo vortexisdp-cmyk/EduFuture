@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тексти, що продають і надихають.</title>
     <style id="theme-style">
@@ -19,6 +20,7 @@
             --transition-duration-300: 0.3s;
             --transition-duration-1000: 1s;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
             background-color: var(--color-bg-main);
@@ -27,8 +29,8 @@
             transition: background-color 0.3s ease;
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
         }
+
         /* Тема по умолчанию (Default) */
         .theme-default {
             --color-bg-main: #0f172a;
@@ -53,6 +55,8 @@
             --color-button-default-bg: #334155;
             --color-button-default-hover: #475569;
         }
+		
+
         /* Оранжевая тема */
         .theme-orange {
             --color-bg-main: #0f172a;
@@ -77,6 +81,7 @@
             --color-button-default-bg: #334155;
             --color-button-default-hover: #475569;
         }
+
         /* Тема Material Design */
         .theme-material {
             --color-bg-main: #212121;
@@ -108,12 +113,13 @@
             --color-gray-400: #bdbdbd;
             --color-gray-500: #9e9e9e;
         }
+
         /* Общие стили */
         .min-h-screen { min-height: 100vh; }
         .bg-gradient-to-br { background: var(--color-bg-gradient); }
         .bg-slate-800 { background-color: var(--color-slate-800); }
         .bg-slate-900 { background-color: var(--color-slate-900); }
-        .container { width: 100%; margin: 0 auto; max-width: 1280px; padding: 0 1rem; }
+        .container { width: 100%; margin: 0 auto; max-width: 1280px; }
         .px-4 { padding-left: 1rem; padding-right: 1rem; }
         .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
         .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
@@ -235,20 +241,25 @@
         .focus\:outline-none:focus { outline: 2px solid transparent; outline-offset: 2px; }
         .transition-colors { transition-property: color, background-color, border-color; transition-duration: 0.3s; }
         .cursor-pointer { cursor: pointer; }
+
         /* Адаптивные классы */
         @media (min-width: 768px) {
             .md\:py-32 { padding-top: 8rem; padding-bottom: 8rem; }
+            .md\:text-6xl { font-size: 3.75rem; line-height: 1; }
             .md\:text-5xl { font-size: 3rem; line-height: 1; }
             .md\:text-2xl { font-size: 1.5rem; line-height: 2rem; }
             .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
             .md\:p-12 { padding: 3rem; }
         }
+
         @media (min-width: 1024px) {
-            .lg\:text-6xl { font-size: 3.75rem; line-height: 1; }
+            .lg\:text-7xl { font-size: 4.5rem; line-height: 1; }
         }
+
         @media (min-width: 640px) {
             .sm\:flex-row { flex-direction: row; }
         }
+
         /* Специальные стили */
         .hero-section-gradient {
             background: var(--color-hero-text-gradient);
@@ -256,9 +267,11 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
         .section-background-gradient {
             background: linear-gradient(to right, var(--color-primary-light), var(--color-secondary-light));
         }
+
         /* Стили для видео */
         .video-container {
             max-width: 600px;
@@ -268,40 +281,45 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             border: 2px solid var(--color-card-hover-border);
         }
+
         .video-container iframe {
             width: 100%;
             height: 315px;
             border: none;
         }
+
         /* Обновленные стили для социальных блоков */
         .social-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            max-width: 1000px;
+            grid-template-columns: repeat(4, 1fr); /* 4 колонки для десктопа */
+            gap: 2.5rem; /* Отступы между блоками */
+            max-width: 800px;
             margin: 0 auto;
-            padding: 0 1rem;
         }
+
         @media (max-width: 1024px) {
             .social-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
                 gap: 1.5rem;
-                max-width: 600px;
+                max-width: 500px;
             }
         }
+
         @media (max-width: 600px) {
             .social-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                max-width: 350px;
+                grid-template-columns: 1fr; /* 1 колонка на телефонах */
+                gap: 1rem;
+                max-width: 300px;
             }
         }
+
         .social-grid a {
             text-decoration: none;
             color: inherit;
         }
+
         .social-block {
-            padding: 2rem 1.5rem;
+            padding: 2.5rem 2rem;
             border-radius: 1rem;
             background-color: var(--color-slate-700);
             border: 1px solid var(--color-slate-600);
@@ -312,28 +330,32 @@
             align-items: center;
             text-align: center;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            min-height: 180px;
         }
+
         .social-block:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
             border-color: var(--color-card-hover-border);
             background-color: rgba(255, 255, 255, 0.05);
         }
+
         .social-block-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
             color: var(--color-white);
             transition: transform 0.3s ease;
         }
+
         .social-block:hover .social-block-icon {
             transform: scale(1.1);
         }
+
         .social-block-text {
             color: var(--color-white);
             font-weight: 600;
             font-size: 1.125rem;
         }
+
         /* Переключатель тем */
         #theme-toggle {
             display: flex;
@@ -353,9 +375,11 @@
             border: none;
             outline: none;
         }
+
         #theme-toggle:hover {
             transform: scale(1.1);
         }
+
         #theme-toggle::after {
             content: '';
             display: block;
@@ -364,29 +388,21 @@
             border-radius: 50%;
             background-color: var(--color-white);
         }
+
         /* Адаптивность */
         @media (max-width: 768px) {
             .video-container {
                 max-width: 100%;
-                margin: 0 auto;
+                margin: 0 1rem;
             }
             .video-container iframe {
                 height: 250px;
             }
-            .container {
-                padding: 0 1rem;
-            }
         }
+
         @media (max-width: 480px) {
             .social-grid {
-                padding: 0 0.5rem;
-            }
-            .social-block {
-                padding: 1.5rem 1rem;
-                min-height: 160px;
-            }
-            .social-block-icon {
-                font-size: 2rem;
+                gap: 1rem;
             }
         }
     </style>
@@ -394,43 +410,57 @@
 <body class="theme-material">
     <div class="min-h-screen bg-gradient-to-br" id="app">
         <button id="theme-toggle"></button>
+        
         <section class="relative overflow-hidden">
             <div class="absolute inset-0 section-background-gradient"></div>
             <div class="container mx-auto px-4 py-20 md:py-32 relative z-10">
                 <div class="max-w-4xl mx-auto text-center transition-all duration-1000 opacity-100 translate-y-0" id="hero-content">
-                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent leading-tight hero-section-gradient">
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-clip-text text-transparent leading-tight hero-section-gradient">
                         Кібербезпека + креатив = наша спільнота
                     </h1>
                     <p class="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
                         Пропонуємо: копірайтинг, веброзробку, OSINT. Працюємо точно, швидко, адаптивно.
                     </p>
-                    <div class="video-container mb-8">
+                    
+                  <!-- другой класс <iframe width="560" height="315"
+				  
+				  <div class="video-container mb-8">
                         <iframe 
-                            src="https://www.youtube.com/embed/c2e20SJCpgw?si=KC2fu1OuTb7WWEAe" 
-                            title="YouTube video player" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            referrerpolicy="strict-origin-when-cross-origin" 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="Презентационное видео"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             allowfullscreen>
                         </iframe>
                     </div>
+					-->
+					
+					  <div class="video-container mb-8">
+                     <iframe width="560" height="315"
+						 src="https://www.youtube.com/embed/c2e20SJCpgw?si=KC2fu1OuTb7WWEAe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+						 picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+						 </iframe> 
+						 </div>
+									
                     <p class="text-lg text-gray-300">
                         Дивіться презентаційне відео вище, щоб дізнатися більше про мої послуги
                     </p>
                 </div>
             </div>
+            
             <div class="absolute top-20 left-10 w-32 h-32 rounded-full blur-xl" style="background-color: var(--color-dots-1);"></div>
             <div class="absolute bottom-20 right-10 w-48 h-48 rounded-full blur-xl" style="background-color: var(--color-dots-2);"></div>
             <div class="absolute top-1/2 left-1/4 w-24 h-24 rounded-full blur-xl" style="background-color: var(--color-dots-3);"></div>
         </section>
+
         <section class="py-20" style="background-color: rgba(30, 41, 59, 0.5);">
             <div class="container mx-auto px-4">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Мої послуги</h2>
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Послуги</h2>
                     <p class="text-xl text-gray-300 max-w-3xl mx-auto">
                         Я спеціалізуюсь на створенні контенту, який не просто інформує, а справді працює на ваш бізнес.
                     </p>
                 </div>
+                
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="p-8 rounded-2xl border transition-all duration-300 transform hover:scale-105 hover:shadow-2xl" style="background: linear-gradient(to bottom right, var(--color-slate-800), var(--color-slate-900)); border-color: var(--color-card-border-default); box-shadow: 0 25px 50px -12px var(--color-shadow-primary);" onmouseover="this.style.borderColor = 'var(--color-card-hover-border)'" onmouseout="this.style.borderColor = 'var(--color-card-border-default)'">
                         <div class="text-5xl mb-6">✍️</div>
@@ -450,6 +480,152 @@
                 </div>
             </div>
         </section>
+
+  <!-- Testimonials Section якщо сховати блоке нижче то колір буде безшовним та единим з тарифами -->
+        <section class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+				
+                  <!-- саме тут схован блок відгуків
+
+				  <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Відгуки клієнтів</h2>
+                    <p class="text-xl text-gray-300">Ось що кажуть ті, хто вже скористався моїми послугами</p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="p-8 md:p-12 rounded-2xl border border-slate-700 relative overflow-hidden" style="background: linear-gradient(to bottom right, var(--color-slate-800), var(--color-slate-900));">
+                        <div class="absolute top-0 left-0 w-full h-1" style="background: linear-gradient(to right, var(--color-primary-base), var(--color-secondary-base));"></div>
+                        <blockquote class="text-xl md:text-2xl text-gray-200 italic mb-6 relative z-10" id="testimonial-text">
+                            "Праця з цим копірайтером змінила наш бізнес! Наші продажі зросли на 40% всього за місяць після оновлення текстів на сайті."
+                        </blockquote>
+                        <cite class="text-lg font-semibold relative z-10" id="testimonial-author" style="color: var(--color-testimonials-text);">
+                            — Анна Петрова, CEO маркетингової агенції
+                        </cite>
+                        
+                        <div class="flex justify-center mt-8 space-x-2" id="testimonial-indicators">
+                            <button class="w-3 h-3 rounded-full transition-all duration-300 cursor-pointer" data-index="0" aria-label="Показати відгук 1" style="background-color: var(--color-active-indicator); transform: scale(1.25);"></button>
+                            <button class="w-3 h-3 rounded-full transition-all duration-300 cursor-pointer" data-index="1" aria-label="Показати відгук 2" style="background-color: var(--color-inactive-indicator);"></button>
+                            <button class="w-3 h-3 rounded-full transition-all duration-300 cursor-pointer" data-index="2" aria-label="Показати відгук 3" style="background-color: var(--color-inactive-indicator);"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+</div> -->
+
+
+    <!--   <section class="py-20" style="background-color: rgba(30, 41, 59, 0.5);">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4">Тарифні плани</h2>
+                    <p class="text-xl text-gray-300">Оберіть відповідний пакет послуг для вашого бізнесу</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="relative p-8 rounded-2xl border-2 transition-all duration-300 transform hover:scale-105" style="background: linear-gradient(to bottom right, var(--color-slate-800), var(--color-slate-900)); border-color: var(--color-card-border-default);" onmouseover="this.style.borderColor = 'var(--color-card-hover-border)'" onmouseout="this.style.borderColor = 'var(--color-card-border-default)'">
+                        <h3 class="text-2xl font-bold text-white mb-2">Стартовий</h3>
+                        <div class="text-4xl font-bold text-transparent bg-clip-text mb-6" style="background-image: var(--color-text-gradient-plans);">
+                            5 000 ₴
+                        </div>
+                        
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                3 продажні тексти
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                SEO-оптимізація
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                1 правка
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 text-white border" style="background-color: var(--color-button-default-bg); border-color: var(--color-slate-600);" onmouseover="this.style.backgroundColor = 'var(--color-button-default-hover)'; this.style.borderColor = 'var(--color-slate-500)'" onmouseout="this.style.backgroundColor = 'var(--color-button-default-bg)'; this.style.borderColor = 'var(--color-slate-600)'" onclick="alert('Дякуємо за інтерес! Зв\'яжіться зі мною для обговорення деталей.')">
+                            Обрати план
+                        </button>
+                    </div>
+
+                    <div class="relative p-8 rounded-2xl border-2 transition-all duration-300 transform scale-105 shadow-2xl" style="background: linear-gradient(to bottom right, var(--color-slate-800), var(--color-slate-900)); border-color: var(--color-active-indicator); box-shadow: 0 25px 50px -12px var(--color-shadow-primary);">
+                        <div class="absolute top-0 right-0 text-white text-sm font-bold px-4 py-1 rounded-bl-lg rounded-tr-lg" style="background: linear-gradient(to right, var(--color-primary-base), var(--color-secondary-base));">
+                            Популярний
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold text-white mb-2">Бізнес</h3>
+                        <div class="text-4xl font-bold text-transparent bg-clip-text mb-6" style="background-image: var(--color-text-gradient-plans);">
+                            15 000 ₴
+                        </div>
+                        
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                10 текстів
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Повна SEO-оптимізація
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Аналітика конкурентів
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 text-white shadow-lg hover:shadow-xl" style="background: linear-gradient(to right, var(--color-primary-base), var(--color-secondary-base));" onmouseover="this.style.background = 'linear-gradient(to right, var(--color-primary-dark), var(--color-secondary-dark))'" onmouseout="this.style.background = 'linear-gradient(to right, var(--color-primary-base), var(--color-secondary-base))'" onclick="alert('Дякуємо за вибір популярного плану! Зв\'яжіться зі мною для початку роботи.')">
+                            Обрати план
+                        </button>
+                    </div>
+
+                    <div class="relative p-8 rounded-2xl border-2 transition-all duration-300 transform hover:scale-105" style="background: linear-gradient(to bottom right, var(--color-slate-800), var(--color-slate-900)); border-color: var(--color-card-border-default);" onmouseover="this.style.borderColor = 'var(--color-card-hover-border)'" onmouseout="this.style.borderColor = 'var(--color-card-border-default)'">
+                        <h3 class="text-2xl font-bold text-white mb-2">Преміум</h3>
+                        <div class="text-4xl font-bold text-transparent bg-clip-text mb-6" style="background-image: var(--color-text-gradient-plans);">
+                            30 000 ₴
+                        </div>
+                        
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Необмежено текстів
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Комплексна SEO-стратегія
+                            </li>
+                            <li class="flex items-center text-gray-300">
+                                <svg class="w-5 h-5 text-green-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Щомісячна підтримка
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 text-white border" style="background-color: var(--color-button-default-bg); border-color: var(--color-slate-600);" onmouseover="this.style.backgroundColor = 'var(--color-button-default-hover)'; this.style.borderColor = 'var(--color-slate-500)'" onmouseout="this.style.backgroundColor = 'var(--color-button-default-bg)'; this.style.borderColor = 'var(--color-slate-600)'" onclick="alert('Дякуємо за інтерес до преміум плану! Зв\'яжіться зі мною для детального обговорення.')">
+                            Обрати план
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+		</div> -->
+		
         <section class="py-20 relative overflow-hidden">
             <div class="absolute inset-0 section-background-gradient"></div>
             <div class="container mx-auto px-4 relative z-10">
@@ -478,69 +654,108 @@
                     </div>
                 </div>
             </div>
+            
             <div class="absolute top-10 right-10 w-40 h-40 rounded-full blur-xl" style="background-color: var(--color-dots-1);"></div>
             <div class="absolute bottom-10 left-10 w-40 h-40 rounded-full blur-xl" style="background-color: var(--color-dots-2);"></div>
         </section>
+
         <footer class="py-12 border-t" style="background-color: var(--color-slate-900); border-color: var(--color-slate-800);">
             <div class="container mx-auto px-4">
                 <div class="text-center">
-                    <a href="https://vortexisdp-cmyk.github.io/portfolio.html/" class="text-lg font-semibold transition-colors cursor-pointer" style="color: var(--color-white);" onmouseover="this.style.color = 'var(--color-active-indicator)'" onmouseout="this.style.color = 'var(--color-white)'">Моє портфоліо</a>
-                    <p class="text-sm mt-4" style="color: var(--color-gray-500);">
+                    <a href="https://vortexisdp-cmyk.github.io/portfolio/" class="text-lg font-semibold transition-colors cursor-pointer" style="color: var(--color-white);" onmouseover="this.style.color = 'var(--color-active-indicator)'" onmouseout="this.style.color = 'var(--color-white)'">Моє потфоліо</a>
+					<!-- <a href="https://vortexisdp-cmyk.github.io/EduFuture/" target="_blank" style="color: #ffffff;">
+  Зв'яжіться зі мною
+</a> -->
+
+					<p class="text-sm mt-4" style="color: var(--color-gray-500);">
                         © 2023 Копірайтер. Всі права захищені.
                     </p>
                 </div>
             </div>
         </footer>
     </div>
+
     <script>
+        // Testimonials carousel
+        const testimonials = [
+            {
+                text: "Праця з цим копірайтером змінила наш бізнес! Наші продажі зросли на 40% всього за місяць після оновлення текстів на сайті.",
+                author: "Анна Петрова, CEO маркетингової агенції"
+            },
+            {
+                text: "SEO-тексти, які написав копірайтер, вивели наш сайт в топ-3 за ключовими запитами. Трафік збільшився в 3 рази!",
+                author: "Дмитро Сидоров, власник інтернет-магазину"
+            },
+            {
+                text: "Контент для нашого блогу став справжнім хітом! Читачі повертаються знову і знову, а показники залученості зросли вдвічі.",
+                author: "Олена Козлова, редактор освітнього порталу"
+            }
+        ];
+
+        const testimonialText = document.getElementById("testimonial-text");
+        const testimonialAuthor = document.getElementById("testimonial-author");
+        const indicators = document.querySelectorAll("#testimonial-indicators button");
+        let currentTestimonial = 0;
+
+        const updateTestimonial = (index) => {
+            testimonialText.textContent = `"${testimonials[index].text}"`;
+            testimonialAuthor.textContent = `— ${testimonials[index].author}`;
+            
+            indicators.forEach((indicator, i) => {
+                if (i === index) {
+                    indicator.style.backgroundColor = 'var(--color-active-indicator)';
+                    indicator.style.transform = 'scale(1.25)';
+                } else {
+                    indicator.style.backgroundColor = 'var(--color-inactive-indicator)';
+                    indicator.style.transform = 'scale(1)';
+                }
+            });
+        };
+
+        const nextTestimonial = () => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            updateTestimonial(currentTestimonial);
+        };
+
+        let interval = setInterval(nextTestimonial, 5000);
+
+        indicators.forEach((indicator, i) => {
+            indicator.addEventListener("click", () => {
+                clearInterval(interval);
+                updateTestimonial(i);
+                currentTestimonial = i;
+                interval = setInterval(nextTestimonial, 5000);
+            });
+        });
+
         // Theme switcher
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
         const themes = ['default', 'orange', 'material'];
         let currentThemeIndex = 1;
-        
+
         const updateTheme = () => {
             // Remove all theme classes
             themes.forEach(theme => body.classList.remove(`theme-${theme}`));
             // Add current theme
             body.classList.add(`theme-${themes[currentThemeIndex]}`);
+            
             // Update toggle button color
             setTimeout(() => {
                 const currentThemeColor = getComputedStyle(document.body).getPropertyValue('--color-active-indicator');
                 themeToggle.style.backgroundColor = currentThemeColor;
             }, 50);
         };
-        
+
         themeToggle.addEventListener('click', () => {
             currentThemeIndex = (currentThemeIndex + 1) % themes.length;
             updateTheme();
         });
-        
+
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
             updateTheme();
-            
-            // Fix for horizontal scrolling on mobile
-            const preventHorizontalScroll = () => {
-                const html = document.documentElement;
-                const body = document.body;
-                const width = Math.max(
-                    body.scrollWidth,
-                    body.offsetWidth,
-                    html.clientWidth,
-                    html.scrollWidth,
-                    html.offsetWidth
-                );
-                const viewportWidth = window.innerWidth;
-                
-                if (width > viewportWidth) {
-                    body.style.overflowX = 'hidden';
-                }
-            };
-            
-            // Run on load and resize
-            preventHorizontalScroll();
-            window.addEventListener('resize', preventHorizontalScroll);
+            updateTestimonial(0);
         });
     </script>
 </body>
