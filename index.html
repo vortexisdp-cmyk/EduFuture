@@ -696,7 +696,7 @@
 <body class="theme-default">
     <header>
         <div class="main-title">Моє портфоліо</div>
-        <p class="subtitle">Освітні платформи, візитки, лендінги та персональні веб-сайти з сучасним UX/UI</p>
+        <p class="subtitle">Сайт візітки, освітні, лендінги та персональні веб-сайти з сучасним UX/UI</p>
         <div class="clock-widget">
     <div class="clock-face">
         <span id="clock-time"></span>
@@ -867,13 +867,13 @@
             // Тексты для переключения основных элементов
             const translations = {
                 uk: {
-                    title: "Мої проекти",
-                    subtitle: "Освітні платформи, візитки, лендінги та персональні веб-сайти з сучасним UX/UI",
+                    title: "Моє портфоліо",
+                    subtitle: "Сайт візітки, освітні, лендінги та персональні веб-сайти з сучасним UX/UI",
                     footer: "<strong>Про ці проекти:</strong><br>УВАГА!!! Деякі сайти у стані розробки.<br>Хоча я не є професійним програмістом, маю глибокі знання в сфері HTML, CSS та вивчаю JavaScript,<br>а також базові навички роботи з PHP. Готовий до співпраці та покращення проектів разом з командою.<br>Конкретно програмуванням не займаюсь. Тому пишіть — домовимось про співпрацю!",
                     clockOptions: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
                 },
                 en: {
-                    title: "My Projects",
+                    title: "My portfolio",
                     subtitle: "Educational platforms, business cards, landing pages and personal websites with modern UX/UI",
                     footer: "<strong>About these projects:</strong><br>ATTENTION!!! Some sites are under development.<br>Although I am not a professional programmer, I have deep knowledge in HTML, CSS and am studying JavaScript,<br>as well as basic PHP skills. Ready to cooperate and improve projects with a team.<br>I don't do programming specifically. So write - let's agree on cooperation!",
                     clockOptions: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
@@ -933,6 +933,17 @@
                 
                 // Обновляем часы
                 updateClock();
+                
+                // === ИСПРАВЛЕНИЕ: Обновляем состояние кнопок переключения языка ===
+                // Это необходимо для корректного отображения активной кнопки при перезагрузке страницы
+                langButtons.forEach(button => {
+                    if (button.dataset.lang === lang) {
+                        button.classList.add('active');
+                    } else {
+                        button.classList.remove('active');
+                    }
+                });
+                // === КОНЕЦ ИСПРАВЛЕНИЯ ===
             }
             
             function updateMetaTags(lang) {
