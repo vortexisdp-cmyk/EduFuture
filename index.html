@@ -444,6 +444,7 @@
         .theme-pastel .category-badge {
             color: var(--text-primary);
         }
+        /* ====== СТИЛИ ДЛЯ УКРАИНСКИХ БЕЙДЖЕЙ ====== */
         .category-badge[data-type="Освіта"] {
             background: linear-gradient(135deg, #3b82f6, #2563eb);
         }
@@ -471,6 +472,36 @@
         .theme-light .category-badge[data-type="Пошук"] { background: #d1fae5; color: #065f46; }
         .theme-light .category-badge[data-type="Контент"] { background: #fef9e6; color: #b45309; }
         .theme-light .category-badge[data-type="Персона"] { background: #fee2e2; color: #991b1b; }
+
+        /* ====== СТИЛИ ДЛЯ АНГЛИЙСКИХ БЕЙДЖЕЙ ====== */
+        .category-badge[data-type="Education"] {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+        .category-badge[data-type="Design"] {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+        .category-badge[data-type="Business"] {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+        }
+        .category-badge[data-type="Search"] {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        .category-badge[data-type="Content"] {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+        .category-badge[data-type="AI Intelligence"] {
+            background: linear-gradient(135deg, #32CD32, #dc2626);
+        }
+        .category-badge[data-type="Personal"] {
+            background: linear-gradient(135deg, #ef4444, #4F46E5);
+         }
+        .theme-light .category-badge[data-type="Education"] { background: #dbeafe; color: #1e40af; }
+        .theme-light .category-badge[data-type="Design"] { background: #ede9fe; color: #5b21b6; }
+        .theme-light .category-badge[data-type="Business"] { background: #cffafe; color: #0e7490; }
+        .theme-light .category-badge[data-type="Search"] { background: #d1fae5; color: #065f46; }
+        .theme-light .category-badge[data-type="Content"] { background: #fef9e6; color: #b45309; }
+        .theme-light .category-badge[data-type="Personal"] { background: #fee2e2; color: #991b1b; }
+
         footer {
             margin-top: 100px;
             font-size: 1rem;
@@ -793,14 +824,14 @@
         а також базові навички роботи з PHP. Готовий до співпраці та покращення проектів разом з командою.<br>
         Конкретно програмуванням не займаюсь. Тому пишіть — домовимось про співпрацю!
     </footer>
-    
+
     <!-- ====== ПАНЕЛЬ ВИБОРУ МОВИ ====== -->
     <div class="language-switcher">
         <label for="lang-select">Мова:</label>
         <button class="lang-button active" data-lang="uk" title="Українська">UK</button>
         <button class="lang-button" data-lang="en" title="English">EN</button>
     </div>
-    
+
     <!-- ====== ПАНЕЛЬ ВИБОРУ ТЕМИ ====== -->
     <div class="theme-selector">
         <label for="theme-select">Тема:</label>
@@ -810,7 +841,7 @@
         <button class="theme-button" data-theme="olive" title="Оливковая"></button>
         <button class="theme-button" data-theme="pastel" title="Пастель"></button>
     </div>
-    
+
     <script>
         // ====== ФУНКЦИОНАЛ ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА ======
         document.addEventListener('DOMContentLoaded', function() {
@@ -819,7 +850,7 @@
             const subtitle = document.querySelector('.subtitle');
             const footer = document.querySelector('footer');
             const clockDateElement = document.getElementById('clock-date');
-            
+
             // Данные для перевода ссылок
             const linkTranslations = {
                 1: {
@@ -863,7 +894,7 @@
                     en: { title: "Artificial Intelligence", subtitle: "landing page", category: "AI Intelligence" }
                 }
             };
-            
+
             // Тексты для переключения основных элементов
             const translations = {
                 uk: {
@@ -879,41 +910,41 @@
                     clockOptions: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
                 }
             };
-            
+
             // Проверяем сохраненный язык
             const savedLang = localStorage.getItem('selectedLanguage') || 'uk';
-            
+
             // Применяем сохраненный язык
             applyLanguage(savedLang);
-            
+
             // Добавляем обработчики кликов
             langButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const lang = this.dataset.lang;
-                    
+
                     // Удаляем активный класс со всех кнопок
                     langButtons.forEach(btn => btn.classList.remove('active'));
-                    
+
                     // Добавляем активный класс к выбранной кнопке
                     this.classList.add('active');
-                    
+
                     // Применяем язык
                     applyLanguage(lang);
-                    
+
                     // Сохраняем выбор пользователя
                     localStorage.setItem('selectedLanguage', lang);
                 });
             });
-            
+
             function applyLanguage(lang) {
                 // Обновляем основные тексты
                 mainTitle.textContent = translations[lang].title;
                 subtitle.innerHTML = translations[lang].subtitle;
                 footer.innerHTML = translations[lang].footer;
-                
+
                 // Обновляем атрибут lang у html тега
                 document.documentElement.lang = lang;
-                
+
                 // Обновляем тексты в ссылках
                 document.querySelectorAll('.link-btn').forEach(link => {
                     const linkId = link.dataset.linkId;
@@ -922,18 +953,20 @@
                         if (translation) {
                             link.querySelector('.title').textContent = translation.title;
                             link.querySelector('.subtitle').textContent = translation.subtitle;
-                            link.querySelector('.category-badge').textContent = translation.category;
-                            link.querySelector('.category-badge').dataset.type = translation.category;
+                            const badge = link.querySelector('.category-badge');
+                            badge.textContent = translation.category;
+                            // Исправление: обновляем data-type бейджа
+                            badge.dataset.type = translation.category;
                         }
                     }
                 });
-                
+
                 // Обновляем мета-теги для SEO
                 updateMetaTags(lang);
-                
+
                 // Обновляем часы
                 updateClock();
-                
+
                 // === ИСПРАВЛЕНИЕ: Обновляем состояние кнопок переключения языка ===
                 // Это необходимо для корректного отображения активной кнопки при перезагрузке страницы
                 langButtons.forEach(button => {
@@ -945,13 +978,13 @@
                 });
                 // === КОНЕЦ ИСПРАВЛЕНИЯ ===
             }
-            
+
             function updateMetaTags(lang) {
                 const metaDescription = document.querySelector('meta[name="description"]');
                 const ogTitle = document.querySelector('meta[property="og:title"]');
                 const ogDescription = document.querySelector('meta[property="og:description"]');
                 const titleElement = document.querySelector('title');
-                
+
                 if (lang === 'en') {
                     titleElement.textContent = "My Projects — Education, Search, Content";
                     metaDescription.setAttribute('content', "My web projects: educational platforms, portfolios, landing pages. Modern UX/UI design.");
@@ -964,19 +997,19 @@
                     ogDescription.setAttribute('content', "Освітні платформи, візитки, лендінги та персональні веб-сайти з сучасним UX/UI");
                 }
             }
-            
+
             // Функция для обновления часов и даты
             function updateClock() {
                 const now = new Date();
                 const timeElement = document.getElementById('clock-time');
                 const lang = document.querySelector('.lang-button.active').dataset.lang || 'uk';
                 const options = translations[lang].clockOptions;
-                
+
                 // Форматирование времени в 24-часовом формате с ведущими нулями
                 const hours = String(now.getHours()).padStart(2, '0');
                 const minutes = String(now.getMinutes()).padStart(2, '0');
                 const timeString = `${hours}:${minutes}`;
-                
+
                 // Форматирование даты в зависимости от языка
                 let locale;
                 if (lang === 'en') {
@@ -984,18 +1017,18 @@
                 } else {
                     locale = 'uk-UA';
                 }
-                
+
                 const dateString = now.toLocaleDateString(locale, options);
-                
+
                 timeElement.textContent = timeString;
                 clockDateElement.textContent = dateString;
             }
-            
+
             // Запускаем обновление часов сразу и затем каждую секунду
             updateClock();
             setInterval(updateClock, 1000);
         });
-        
+
         // ====== ФУНКЦИОНАЛ ПЕРЕКЛЮЧЕНИЯ ТЕМЫ ======
         document.addEventListener('DOMContentLoaded', function() {
             const body = document.body;
@@ -1007,41 +1040,41 @@
                 'olive': 'theme-olive',
                 'pastel': 'theme-pastel'
             };
-            
+
             // Проверяем сохраненную тему
             const savedTheme = localStorage.getItem('selectedTheme') || 'default';
-            
+
             // Применяем сохраненную тему
             applyTheme(savedTheme);
-            
+
             // Добавляем обработчики кликов
             themeButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const theme = this.dataset.theme;
-                    
+
                     // Удаляем активный класс со всех кнопок
                     themeButtons.forEach(btn => btn.classList.remove('active'));
-                    
+
                     // Добавляем активный класс к выбранной кнопке
                     this.classList.add('active');
-                    
+
                     // Применяем тему
                     applyTheme(theme);
-                    
+
                     // Сохраняем выбор пользователя
                     localStorage.setItem('selectedTheme', theme);
                 });
             });
-            
+
             function applyTheme(theme) {
                 // Удаляем все классы тем
                 Object.values(themeNames).forEach(className => {
                     body.classList.remove(className);
                 });
-                
+
                 // Добавляем класс выбранной темы
                 body.classList.add(themeNames[theme]);
-                
+
                 // Обновляем фоновую анимацию для светлой темы
                 if (theme === 'light' || theme === 'terracotta' || theme === 'olive' || theme === 'pastel') {
                     body.style.animation = 'none';
@@ -1054,7 +1087,7 @@
                     document.querySelector('.main-title').style.color = '#ffffff';
                     document.querySelector('.main-title').style.animation = 'pulse 4s ease-in-out infinite';
                 }
-                
+
                 // Устанавливаем активный класс на кнопку
                 const activeBtn = document.querySelector(`.theme-button[data-theme="${theme}"]`);
                 if (activeBtn) {
